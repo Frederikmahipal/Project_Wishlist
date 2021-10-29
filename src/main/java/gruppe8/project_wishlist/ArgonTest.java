@@ -12,8 +12,10 @@ public class ArgonTest {
     // https://github.com/phxql/argon2-jvm
 
     public static void main(String[] args) {
-        // Create Argon2 instance
-        Argon2 argon2 = Argon2Factory.create();
+        // Select the argon2id type
+        Argon2Factory.Argon2Types type = Argon2Factory.Argon2Types.ARGON2id;
+        // Create Argon2 instance with type
+        Argon2 argon2 = Argon2Factory.create(type);
 
         // Create Scanner for reading user input
         Scanner scanner = new Scanner(System.in);
