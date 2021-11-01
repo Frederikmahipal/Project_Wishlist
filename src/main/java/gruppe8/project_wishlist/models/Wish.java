@@ -55,4 +55,15 @@ public class Wish {
     public void setNote(String note) {
         this.note = note;
     }
+
+    @Override
+    public String toString() {
+        return "Wish{" +
+                "id=" + id +
+                ", price=" + price +
+                ", title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }
