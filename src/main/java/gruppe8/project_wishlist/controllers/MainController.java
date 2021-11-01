@@ -11,6 +11,16 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/registration")
+    public String reigstration(){
+        return "registration";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
 
 
 }
