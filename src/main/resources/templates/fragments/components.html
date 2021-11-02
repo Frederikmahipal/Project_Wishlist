@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">>
+<head th:fragment="head">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+
+</head>
+<body>
+
+<header class="navbar" th:fragment="navbar">
+    <div class="navbar-text">
+        <a th:href="@{/}">Front page</a>
+    </div>
+
+    <div class="navbar-text">
+        <a th:href="@{registration}">Registration</a>
+    </div>
+
+    <div class="navbar-text">
+        <a th:href="@{login}">Login site</a>
+    </div>
+
+
+</header>
+
+</body>
+</html>

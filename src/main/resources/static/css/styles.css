@@ -1,0 +1,53 @@
+
+@import "colors.css";
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 1rem;
+
+    background-color: var(--navbar-color);
+    border-radius: 1rem;
+}
+
+.navbar-text{
+    flex-grow: 1;
+    text-align: center;
+}
+
+.navbar-text a{
+    display: block;
+    padding: 0.75rem 0;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: var(--navbar-text-color);
+
+    text-decoration: none;
+}
+
+.navbar-text a::before {
+    content: " ";
+    display: block;
+    height: 8px;
+}
+
+.navbar-text a::after{
+    content: " ";
+    display: block;
+    height: 4px;
+    margin-top: 4px;
+    width: 0;
+
+    background-color: var(--navbar-text-color);
+    transition: all ease-in-out 250ms;
+}
+
+.navbar-text a:hover::after{
+    width: 100%;
+}

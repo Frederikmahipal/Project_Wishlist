@@ -5,7 +5,35 @@
     <title>Title</title>
 </head>
 <body>
+    <header>
 
-<h1>Registration was a success!!</h1>
+    </header>
+
+    <main>
+        <h1>Registration was a success!!</h1>
+
+        <h2>Create a wishlist!</h2>
+
+        <form method="POST" th:action="@{wishlistSuccess}">
+
+        <label>Name
+            <input type="text" name="name" required>
+        </label>
+
+        <label>Submit
+            <input type="submit">
+        </label>
+
+
+    </form>
+
+
+    </main>
+
+
+    <footer>
+
+    </footer>
+
 </body>
 </html>

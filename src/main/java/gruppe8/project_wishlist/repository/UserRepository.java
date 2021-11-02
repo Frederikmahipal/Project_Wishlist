@@ -18,7 +18,7 @@ public class UserRepository {
     static ArrayList<User> userList = new ArrayList<>();
     Connection connection = DatabaseConnection.getConnection();
 
-    public List<User> getAllWishLists(){
+    public List<User> getAllUsers(){
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = connection.prepareStatement("SELECT * FROM wishlist.users");
