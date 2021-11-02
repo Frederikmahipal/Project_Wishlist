@@ -2,33 +2,31 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Regisration</title>
     <script type="text/javascript" th:src="@{JS/functions.js}"></script>
 
-
+    <th:block th:insert="fragments/components :: head">head</th:block>
 </head>
 
 <body>
 
-<header>
-
-</header>
+<header th:replace="fragments/components :: navbar"></header>
 
 <main>
     <h2>Registration</h2>
     <form method="POST" th:action="@{registrationSuccess}">
 
         <label>Name
-            <input type="text" name="fullName" required>
+            <input type="text" name="fullName" required oninvalid="alert('Name must be filled')">
         </label>
 
         <label>Password
-            <input type="password" id="passwordInput" name="argon2Password" required><br>
+            <input type="password" id="passwordInput" name="argon2Password" required oninvalid="alert('Password must be filled')"><br>
             <input type="checkbox" onclick="passwordVisibility()">Toggle
         </label>
 
         <label>Email
-            <input type="text" name="email" required>
+            <input type="text" name="email" id="emailInput" required>
         </label>
 
         <label>Submit
@@ -42,9 +40,7 @@
 </main>
 
 
-<footer>
+<footer th:replace="fragments/components :: footer"></footer>
 
-
-</footer>
 </body>
 </html>

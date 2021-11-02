@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <script type="text/javascript" th:src="@{JS/functions.js}"></script>
+
+    <th:block th:insert="fragments/components :: head">head</th:block>
+
 </head>
 <body>
-<header>
 
-</header>
+<header th:replace="fragments/components :: navbar"></header>
 
 <main>
     <h2>Login</h2>
     <form method="post" th:action="login">
-        <label>Email</label>
-        <input type="email" name="email" required>
+        <label>Email
+            <input type="email" name="email" required>
+        </label>
 
-        <label>Password</label>
-        <input type="password" name="password" required>
+        <label>Password
+            <input type="password" id="passwordInput" name="password" required>
+            <input type="checkbox" onclick="passwordVisibility()">Toggle
+        </label>
 
         <input type="submit" required>
     </form>
@@ -25,9 +31,8 @@
 </main>
 
 
-<footer>
 
+<footer th:replace="fragments/components :: footer"></footer>
 
-</footer>
 </body>
 </html>

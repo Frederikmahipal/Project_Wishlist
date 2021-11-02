@@ -66,7 +66,7 @@ public class MainController {
             userRepository.addUserToDatabase(user);
             return "registrationSuccess";
         } else
-            return "redirect:index";
+            return "redirect:/";
     }
     // insert into wishlists (userId, name, created) VALUES  (?,?,?)
     @PostMapping("/wishlistSuccess")
