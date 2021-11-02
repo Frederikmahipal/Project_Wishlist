@@ -4,7 +4,6 @@ import gruppe8.project_wishlist.models.User;
 import gruppe8.project_wishlist.models.Wishlist;
 import gruppe8.project_wishlist.repository.WishListRepository;
 import gruppe8.project_wishlist.services.EmailValidation;
-import gruppe8.project_wishlist.services.UserAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import gruppe8.project_wishlist.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,11 +11,9 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 
 @Controller
