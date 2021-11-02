@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ønskedisen</title>
+    <script type="text/javascript" th:src="@{JS/functions.js}"></script>
 
     <th:block th:insert="fragments/components :: head">head</th:block>
 </head>
@@ -19,11 +20,7 @@
 
 
 
-<footer>
-
-
-</footer>
-
+<footer th:replace="fragments/components :: footer"></footer>
 
 </body>
 
