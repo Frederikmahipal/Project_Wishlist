@@ -1,17 +1,16 @@
 package gruppe8.project_wishlist.models;
 
+import java.sql.Date;
+
 public class User {
     private int id;
     private String fullName, email, argon2Password;
+
 
     public User(String name, String email, String password) {
         this.fullName = name;
         this.email = email;
         this.argon2Password = password;
-    }
-
-    public User(int id){
-        this.id = id;
     }
 
     public int getId() {
@@ -45,4 +44,5 @@ public class User {
     public void setArgon2Password(String argon2Password) {
         this.argon2Password = argon2Password;
     }
+
 }
