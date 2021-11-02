@@ -7,4 +7,3 @@ function passwordVisibility() {
         pw_ele.type = "password";
     }
 }
-

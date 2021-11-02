@@ -47,7 +47,7 @@ public class WishListRepository {
         try{
             // insert into wishlists (userId, name, created) VALUES  (?,?,?)
             PreparedStatement preparedStatement = connection.prepareStatement("insert into wishlist.wishlists (userId, name, created) VALUES  (?,?,?)");
-            preparedStatement.setInt(1,user.getId());
+            preparedStatement.setInt(1,2);
             preparedStatement.setString(2,wishlist.getName());
             preparedStatement.setDate(3,wishlist.getCreated());
 
