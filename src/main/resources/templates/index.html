@@ -3,32 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Ønskedisen</title>
+    <script type="text/javascript" th:src="@{JS/functions.js}"></script>
+
+    <th:block th:insert="fragments/components :: head">head</th:block>
 </head>
 
 <body>
 
-<header>
-
-    <h1>Hello world</h1>
-
-</header>
+<header th:replace="fragments/components :: navbar"></header>
 
 <main>
 
-
-<a th:href="@{registration}">Registration</a>
-<a th:href="@{login}">Login</a>
 
 
 </main>
 
 
 
-<footer>
-
-
-</footer>
-
+<footer th:replace="fragments/components :: footer"></footer>
 
 </body>
 

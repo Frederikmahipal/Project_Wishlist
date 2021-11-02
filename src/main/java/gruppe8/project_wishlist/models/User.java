@@ -1,5 +1,6 @@
 package gruppe8.project_wishlist.models;
 
+import java.sql.Date;
 import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

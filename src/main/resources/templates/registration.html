@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" th:src="@{JS/functions.js}"></script>
+
+
 </head>
+
 <body>
+
 <header>
 
 </header>
 
 <main>
     <h2>Registration</h2>
-    <form>
-        <label>Name</label>
-        <input type="text" name="fullName" required>
+    <form method="POST" th:action="@{registrationSuccess}">
 
-        <label>Password</label>
-        <input type="text" name="argon2Password" required>
+        <label>Name
+            <input type="text" name="fullName" required>
+        </label>
 
-        <label>Email</label>
-        <input type="text" name="email">
+        <label>Password
+            <input type="password" id="passwordInput" name="argon2Password" required><br>
+            <input type="checkbox" onclick="passwordVisibility()">Toggle
+        </label>
 
-        <input type="submit" required>
+        <label>Email
+            <input type="text" name="email" required>
+        </label>
+
+        <label>Submit
+            <input type="submit">
+        </label>
+
 
     </form>
 

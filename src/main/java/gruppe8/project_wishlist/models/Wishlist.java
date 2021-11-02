@@ -1,25 +1,25 @@
 package gruppe8.project_wishlist.models;
 
+import java.sql.Date;
+
 public class Wishlist {
-    private String title;
+    private String name;
     private int id;
-    private Wish wish;
+    private Date created;
 
-    public Wishlist(String title, Wish wish) {
-        this.title = title;
-        this.wish = wish;
-    }
 
-    public Wishlist(int id){
+    public Wishlist(String name, int id, Date created) {
+        this.name = name;
         this.id = id;
+        this.created = created;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -30,11 +30,11 @@ public class Wishlist {
         this.id = id;
     }
 
-    public Wish getWish() {
-        return wish;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setWish(Wish wish) {
-        this.wish = wish;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

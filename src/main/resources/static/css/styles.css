@@ -1,0 +1,102 @@
+
+@import "colors.css";
+
+/* Navbar */
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 0;
+    top: 0;
+
+    background-color: var(--background-color);
+    border-radius: 1rem;
+}
+
+.navbar-text{
+    flex-grow: 1;
+    text-align: center;
+}
+
+.navbar-text a{
+    display: block;
+    padding: 0.75rem 0;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: var(--primary-text-color);
+
+    text-decoration: none;
+}
+
+.navbar-text a::before {
+    content: " ";
+    display: block;
+    height: 8px;
+}
+
+.navbar-text a::after{
+    content: " ";
+    display: block;
+    height: 4px;
+    margin-top: 4px;
+    width: 0;
+
+    background-color: var(--primary-text-color);
+    transition: all ease-in-out 250ms;
+}
+
+.navbar-text a:hover::after{
+    width: 100%;
+}
+
+/* Footer */
+
+.box-border {
+    border: 6px solid var(--border-color);
+    box-sizing: border-box;
+    border-radius: 1rem;
+    margin: 2rem 0 1rem 0;
+    padding: 1rem 2rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    background-color: var(--background-color);
+}
+
+.footer-text a{
+    display: inline-block;
+    margin-left: 25px;
+    padding-top: 5px;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    position: relative;
+}
+
+.footer-text a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+}
+
+.footer-text a::after{
+    content: " ";
+    display: block;
+    height: 5px;
+    width: 0;
+    background-color: #444;
+    bottom: 5px;
+    transition: all ease-in-out 250ms;
+}
+
+.footer-text a:hover::after {
+    width: 100%;
+}
