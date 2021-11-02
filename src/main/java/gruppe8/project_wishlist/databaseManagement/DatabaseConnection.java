@@ -9,10 +9,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseConnection {
-
     private static String user, password, url;
     private static Connection connection = null;
-
 
     public static Connection getConnection(){
         if (connection != null)

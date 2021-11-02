@@ -11,15 +11,14 @@
 
 <main>
     <h2>Login</h2>
-    <form>
-        <label>Name</label>
-        <input type="text" name="fullName" required>
+    <form method="post" th:action="login">
+        <label>Email</label>
+        <input type="email" name="email" required>
 
         <label>Password</label>
-        <input type="text" name="argon2Password" required>
+        <input type="password" name="password" required>
 
         <input type="submit" required>
-
     </form>
 
 
