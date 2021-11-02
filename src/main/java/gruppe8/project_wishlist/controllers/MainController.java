@@ -1,29 +1,22 @@
 package gruppe8.project_wishlist.controllers;
 
-import com.sun.tools.javac.Main;
 import gruppe8.project_wishlist.models.User;
+import gruppe8.project_wishlist.services.EmailValidation;
 import gruppe8.project_wishlist.services.UserAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
-import org.springframework.http.ResponseEntity;
-import gruppe8.project_wishlist.models.User;
 import gruppe8.project_wishlist.repository.UserRepository;
-import gruppe8.project_wishlist.repository.WishListRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-
 
 @Controller
 public class MainController {
     UserRepository userRepository = new UserRepository();
+    EmailValidation validator = new EmailValidation();
 
     private final UserAuthenticationService authService;
 
@@ -58,11 +51,16 @@ public class MainController {
         return "index";
     }
     @PostMapping("/registrationSuccess")
-    public String addUser(@ModelAttribute User user){
-        userRepository.addUserToDatabase(user);
-        return "registrationSuccess";
+    public String addUser(@RequestParam String fullName, @RequestParam String argon2Password,@RequestParam String email) {
+        User user = new User(fullName,email,argon2Password);
+
+
+        String emailToCheck = user.getEmail();
+        if (validator.isEmailValid(emailToCheck)) {
+            userRepository.addUserToDatabase(user);
+            return "registrationSuccess";
+        } else
+            return "redirect:index";
     }
-
-
 
 }
