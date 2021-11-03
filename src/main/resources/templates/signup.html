@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Signup</title>
     <script type="text/javascript" th:src="@{/js/functions.js}"></script>
-
+    <link rel="stylesheet" th:href="@{css/styles.css}">
     <th:block th:insert="fragments/components :: head">head</th:block>
 </head>
 
@@ -13,28 +13,32 @@
 <header th:replace="fragments/components :: navbar"></header>
 
 <main>
-    <h2>Registration</h2>
+    <h2 class="registration_header">Registration</h2>
 
     <p th:if="${error}">
         An error happened during signup, please check your inputs.
     </p>
+    <div class="centering_container">
+        <form method="POST" th:action="@{/signup}">
+            <label>Name
+                <input type="text" id="nameInput" name="fullName" required>
+            </label><br>
 
-    <form method="POST" th:action="@{/signup}">
-        <label>Name
-            <input type="text" id="nameInput" name="fullName" required>
-        </label><br>
+            <label>Email
+                <input type="text" name="email" id="emailInput" required>
+            </label><br>
 
-        <label>Email
-            <input type="text" name="email" id="emailInput" required>
-        </label><br>
+            <label>Password
+                <input type="password" id="passwordInput" name="password" required>
+                <input type="checkbox" onclick="passwordVisibility()">
+            </label>
 
-        <label>Password
-            <input type="password" id="passwordInput" name="password" required>
-        </label><br>
 
-        <label for="submitInput">Submit</label>
-        <input type="submit" id="submitInput">
-    </form>
+            <label for="submitInput">Submit</label>
+            <input type="submit" id="submitInput">
+        </form>
+    </div>
+
 </main>
 
 
