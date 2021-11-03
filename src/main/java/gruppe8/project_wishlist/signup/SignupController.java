@@ -18,7 +18,7 @@ public class SignupController {
         this.logger = LoggerFactory.getLogger(this.getClass());
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/signup")
     public String registration(@RequestParam Optional<String> error, Model model){
         if (error.isPresent()) {
             logger.info("received request with error parameter");
@@ -27,13 +27,13 @@ public class SignupController {
         return "signup";
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/signup")
     public String addUser(SignupRequest request) {
         Boolean success = registrationService.register(request);
         if (success) {
-            return "redirect:/login?registrationSuccess";
+            return "redirect:/login?signupSuccess";
         }
-        return "redirect:/registration?error";
+        return "redirect:/signup?error";
     }
 
 }
