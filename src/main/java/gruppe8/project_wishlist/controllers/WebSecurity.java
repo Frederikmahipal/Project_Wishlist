@@ -59,7 +59,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Bean
     public Argon2PasswordEncoder passwordEncoder() {
-        return new Argon2PasswordEncoder(16, 32 , 1, 65536, 8);
+        return new Argon2PasswordEncoder(16, 32 , 1, 32768, 5);
     }
 }
 
