@@ -1,0 +1,37 @@
+
+body{
+    margin: 0;
+    background: #D0E4F5 url("../images/blue_mist.jpeg") no-repeat scroll center;
+    background-size: 100% 100%;
+}
+
+.registration_header{
+    text-align: center;
+    color: aliceblue;
+
+}
+
+.centering_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+    max-width: 250px;
+    padding: 5px;
+    margin: auto;
+
+}
+label{
+    color: aliceblue;
+}
+
+input {
+    background-color: rgba(208,228,245, 15%);
+    color: aliceblue;
+    border-radius: 2.5em;
+    border: 0.2em solid black;
+    width: 20em;
+
+}
