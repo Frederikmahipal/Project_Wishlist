@@ -9,10 +9,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Repository
 public class UserRepository implements UserDetailsService {
@@ -42,11 +41,14 @@ public class UserRepository implements UserDetailsService {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next())  {
+                Timestamp timestamp = resultSet.getTimestamp("created");
+                LocalDateTime dataTime = timestamp == null ? null : timestamp.toLocalDateTime();
                 user = new User(
                         resultSet.getLong("id"),
                         resultSet.getString("fullName"),
                         resultSet.getString("email"),
-                        resultSet.getString("argon2Password")
+                        resultSet.getString("argon2Password"),
+                        dataTime
                 );
             }
         } catch (SQLException e){
@@ -74,11 +76,12 @@ public class UserRepository implements UserDetailsService {
         if ( userExists(user.getEmail()) ) { return false; }
 
         try (Connection connection = databaseService.getConnection()) {
-            String query = "INSERT INTO users (email, fullName, argon2Password) VALUES (?, ?, ?)";
+            String query = "INSERT INTO users (email, fullName, argon2Password, created) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getEmail());
             preparedStatement.setString(2, user.getFullName());
             preparedStatement.setString(3, user.getArgon2Password());
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
             preparedStatement.execute();
             return preparedStatement.getUpdateCount() == 1;
         } catch (SQLException e) {

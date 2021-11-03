@@ -17,17 +17,17 @@
     <p th:if="${error}">Something went wrong when signing in. Try again.</p>
     <p th:if="${signupSuccess}">Successfully registered. Please sign in.</p>
 
-    <form class="centering_container" method="POST" th:action="@{/login}">
+    <form method="POST" th:action="@{/login}">
         <label>Email
             <input type="email" name="email" required>
-        </label><br>
+        </label>
 
         <label>Password
             <input type="password" id="passwordInput" name="password" required>
-            <input type="checkbox" onclick="passwordVisibility()">Vis kodeord
-        </label><br>
+            <input type="checkbox" onclick="passwordVisibility()">Toggle
+        </label>
 
-        <input value="Log in" type="submit" required>
+        <input type="submit" required>
     </form>
 
 

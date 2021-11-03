@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,12 +13,14 @@ public class User implements UserDetails {
     private String fullName;
     private String email;
     private String argon2Password;
+    private LocalDateTime created;
 
-    public User(Long id, String name, String email, String password) {
+    public User(Long id, String name, String email, String password, LocalDateTime created) {
         this.id = id;
         this.fullName = name;
         this.email = email;
         this.argon2Password = password;
+        this.created = created;
     }
     public User(String name, String email, String password) {
         this.fullName = name;
@@ -54,10 +57,12 @@ public class User implements UserDetails {
     public String getFullName() { return fullName; }
     public String getEmail() { return email; }
     public String getArgon2Password() { return argon2Password; }
+    public LocalDateTime getCreated() { return created; }
     public void setId(Long id) { this.id = id; }
     public void setFullName(String fullName) { this.fullName = fullName; }
     public void setEmail(String email) { this.email = email; }
     public void setArgon2Password(String argon2Password) { this.argon2Password = argon2Password; }
+    public void setCreated(LocalDateTime created) { this.created = created; }
 
     @Override
     public String toString() {
@@ -66,6 +71,7 @@ public class User implements UserDetails {
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", argon2Password='" + argon2Password + '\'' +
+                ", created=" + created.toString() +
                 '}';
     }
 }

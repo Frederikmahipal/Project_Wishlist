@@ -10,16 +10,16 @@ import java.util.Optional;
 
 @Controller
 public class SignupController {
-    private final SignupService registrationService;
+    private final SignupService signupService;
     private final Logger logger;
 
     public SignupController(SignupService registrationService) {
-        this.registrationService = registrationService;
+        this.signupService = registrationService;
         this.logger = LoggerFactory.getLogger(this.getClass());
     }
 
     @GetMapping("/signup")
-    public String registration(@RequestParam Optional<String> error, Model model){
+    public String signup(@RequestParam Optional<String> error, Model model){
         if (error.isPresent()) {
             logger.info("received request with error parameter");
             model.addAttribute("error", true);
@@ -29,7 +29,7 @@ public class SignupController {
 
     @PostMapping("/signup")
     public String addUser(SignupRequest request) {
-        Boolean success = registrationService.register(request);
+        Boolean success = signupService.register(request);
         if (success) {
             return "redirect:/login?signupSuccess";
         }

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Signup</title>
     <script type="text/javascript" th:src="@{/js/functions.js}"></script>
-    <link rel="stylesheet" th:href="@{css/styles.css}">
 
     <th:block th:insert="fragments/components :: head">head</th:block>
 </head>
@@ -14,20 +13,14 @@
 <header th:replace="fragments/components :: navbar"></header>
 
 <main>
-    <h2 class="registration_header">Opret bruger</h2>
-    <p class="centering_container"> <small>Ønskedisen gemmer alle dine oplysninger sikkert.</small></p>
-
+    <h2>Registration</h2>
 
     <p th:if="${error}">
-        Der skete en fejl under oprettelse. Tjek venligst at dine indtastninger er korrekte.
+        An error happened during signup, please check your inputs.
     </p>
 
-    <form class="centering_container" method="POST" th:action="@{/signup}">
-        <label>Profilbillede
-            <input id="image" type="file" name="profile_photo" placeholder="Photo" required="" capture="user">
-        </label><br>
-
-        <label><Navn></Navn>
+    <form method="POST" th:action="@{/signup}">
+        <label>Name
             <input type="text" id="nameInput" name="fullName" required>
         </label><br>
 
@@ -39,8 +32,8 @@
             <input type="password" id="passwordInput" name="password" required>
         </label><br>
 
-        <label for="submitInput"></label>
-        <input value="Tilmeld" type="submit" id="submitInput">
+        <label for="submitInput">Submit</label>
+        <input type="submit" id="submitInput">
     </form>
 </main>
 

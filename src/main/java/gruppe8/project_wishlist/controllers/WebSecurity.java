@@ -32,16 +32,15 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/", "/signup", "/sharedlink/*", "/js/**", "/css/**", "/favicon.ico" ).permitAll()
+                .antMatchers("/", "/login**", "/signup**", "/sharedlink/**", "/js/**", "/css/**", "/favicon.ico" ).permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/login?success")
-                .failureForwardUrl("/login?error")
                 .usernameParameter("email")
                 .passwordParameter("password")
+                .defaultSuccessUrl("/login?success")
                 .permitAll();
     }
 
@@ -60,7 +59,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Bean
     public Argon2PasswordEncoder passwordEncoder() {
-        return new Argon2PasswordEncoder(16, 32 , 1, 65536, 8);
+        return new Argon2PasswordEncoder(16, 32 , 1, 32768, 5);
     }
 }
 
