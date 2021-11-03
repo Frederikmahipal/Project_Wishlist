@@ -12,21 +12,28 @@
 </head>
 <body>
 
-<header class="navbar box-border" th:fragment="navbar">
+<div class="navbar box-border" th:fragment="navbar">
+
+    <a th:href="@{/}"><img id="logo" th:src="@{images/StolenLogo.png}" alt="logo"></a>
     <div class="navbar-text">
-        <a th:href="@{/}">Front page</a>
+        <a th:href="@{/}">ØNSKEDISEN</a>
+    </div>
+
+    <div class="navbar-fill">
     </div>
 
     <div class="navbar-text">
-        <a th:href="@{signup}">Sign up</a>
+        <a th:href="@{/}">Hjem</a>
     </div>
-
     <div class="navbar-text">
-        <a th:href="@{login}">Login site</a>
+        <a th:href="@{/signup}">Tilmeld</a>
+    </div>
+    <div class="navbar-text" id="login">
+        <a th:href="@{/login}">Log Ind</a>
     </div>
 
 
-</header>
+</div>
 
 
 <footer class="footer box-border" th:fragment="footer">

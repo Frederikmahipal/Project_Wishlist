@@ -32,15 +32,16 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/", "/login**", "/signup**", "/sharedlink/**", "/js/**", "/css/**", "/favicon.ico" ).permitAll()
+                .antMatchers("/", "/signup", "/sharedlink/*", "/js/**", "/css/**", "/favicon.ico","/images/**" ).permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/login?success")
+                .failureForwardUrl("/login?error")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/login?success")
                 .permitAll();
     }
 

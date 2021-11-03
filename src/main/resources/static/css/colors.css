@@ -1,8 +1,11 @@
 :root {
 
-    --primary-text-color: teal;
+    --primary-text-color: #00739F;
+    --primary-text-color-hover: #008abf;
 
-    --background-color: cyan;
+    --secondary-text-color: black;
+
+    --background-color: white;
 
     --border-color:  teal;
 
