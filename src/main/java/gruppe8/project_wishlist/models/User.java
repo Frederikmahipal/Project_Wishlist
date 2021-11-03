@@ -1,7 +1,5 @@
 package gruppe8.project_wishlist.models;
 
-import java.sql.Date;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,79 +19,45 @@ public class User implements UserDetails {
         this.email = email;
         this.argon2Password = password;
     }
-
     public User(String name, String email, String password) {
         this.fullName = name;
         this.email = email;
         this.argon2Password = password;
     }
 
+    // Part of UserDetails interface
     @Override
-    public String getUsername() {
-        return this.email;
-    }
-
+    public String getUsername() { return this.email; }
     @Override
-    public String getPassword() {
-        return this.argon2Password;
-    }
+    public String getPassword() { return this.argon2Password; }
 
+    // The following methods are required to implement UserDetails interface.
+    // We don't make use of GrantedAuthority/Roles, or locks, or expiration.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of( new SimpleGrantedAuthority("ROLE_USER") );
     }
-
     @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
+    public boolean isAccountNonExpired() { return true; }
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
+    public boolean isAccountNonLocked() { return true; }
     @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
+    public boolean isCredentialsNonExpired() { return true; }
     @Override
-    public boolean isEnabled() {
-        return true;
-    }
+    public boolean isEnabled() { return true; }
 
+    // Getters and Setters for User.
+    // TODO: Maybe setters should be handled through the repository??
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getArgon2Password() {
-        return argon2Password;
-    }
-
-    public void setArgon2Password(String argon2Password) {
-        this.argon2Password = argon2Password;
-    }
+    public String getFullName() { return fullName; }
+    public String getEmail() { return email; }
+    public String getArgon2Password() { return argon2Password; }
+    public void setId(Long id) { this.id = id; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public void setEmail(String email) { this.email = email; }
+    public void setArgon2Password(String argon2Password) { this.argon2Password = argon2Password; }
 
     @Override
     public String toString() {

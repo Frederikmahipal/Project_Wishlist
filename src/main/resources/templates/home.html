@@ -7,7 +7,7 @@
     <body>
         <header><h1>Hello world</h1></header>
         <main>
-            <p>Hello <span th:text="${user.getFullName()}" th:remove="tag"></span>!</p>
+            <p>Hello <span th:text="${user.toString()}" th:remove="tag"></span>!</p>
         </main>
         <footer>
         </footer>

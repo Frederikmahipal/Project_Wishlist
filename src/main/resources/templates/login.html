@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <script type="text/javascript" th:src="@{JS/functions.js}"></script>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
 
     <th:block th:insert="fragments/components :: head">head</th:block>
 
@@ -14,7 +14,10 @@
 
 <main>
     <h2>Login</h2>
-    <form method="post" th:action="login">
+    <p th:if="${error}">Something went wrong when signing in. Try again.</p>
+    <p th:if="${signupSuccess}">Successfully registered. Please sign in.</p>
+
+    <form method="post" th:action="@{/login}">
         <label>Email
             <input type="email" name="email" required>
         </label>

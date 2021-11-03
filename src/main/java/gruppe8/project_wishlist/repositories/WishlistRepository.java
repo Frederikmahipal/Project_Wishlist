@@ -1,10 +1,11 @@
-package gruppe8.project_wishlist.repository;
+package gruppe8.project_wishlist.repositories;
 
 
-import gruppe8.project_wishlist.databaseManagement.DatabaseConnection;
+import gruppe8.project_wishlist.services.DatabaseService;
 import gruppe8.project_wishlist.models.User;
-import gruppe8.project_wishlist.models.Wish;
 import gruppe8.project_wishlist.models.Wishlist;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,13 +14,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WishListRepository {
+@Repository
+public class WishlistRepository {
+    private final DatabaseService databaseService;
 
-    static ArrayList<Wishlist> listOfWishLists = new ArrayList<>();
-    UserRepository userRepository = new UserRepository();
-    Connection connection = DatabaseConnection.getConnection();
+    @Autowired
+    public WishlistRepository(DatabaseService databaseService) {
+        this.databaseService = databaseService;
+    }
 
-    public List<Wishlist> getAllWishLists(){
+    /*public List<Wishlist> getAllWishLists() {
         PreparedStatement preparedStatement = null;
 
         try{
@@ -39,14 +43,13 @@ public class WishListRepository {
             System.out.println(e.getMessage());
         }
         return listOfWishLists;
-    }
+    }*/
 
 
     public void addWishListToDatabase(Wishlist wishlist, User user){
-
         try{
             // insert into wishlists (userId, name, created) VALUES  (?,?,?)
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into wishlist.wishlists (userId, name, created) VALUES  (?,?,?)");
+            PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement("insert into wishlist.wishlists (userId, name, created) VALUES  (?,?,?)");
             preparedStatement.setInt(1,2);
             preparedStatement.setString(2,wishlist.getName());
             preparedStatement.setDate(3,wishlist.getCreated());
@@ -60,4 +63,11 @@ public class WishListRepository {
     }
 
 
+    public List<Wishlist> getWishlistsFromUser(User user) {
+        return null;
+    }
+
+    public boolean createWishlistForUser(User user) {
+        return false;
+    }
 }
