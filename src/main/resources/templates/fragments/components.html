@@ -14,7 +14,7 @@
 
 <div class="navbar box-border" th:fragment="navbar">
 
-    <a th:href="@{/}"><img id="logo" th:src="@{images/StolenLogo.png}" alt="logo"></a>
+    <a th:href="@{/}"><img id="logo" th:src="@{images/StolenLogo.png}" alt="logo" src=""></a>
     <div class="navbar-text">
         <a th:href="@{/}">ØNSKEDISEN</a>
     </div>
@@ -28,9 +28,15 @@
     <div class="navbar-text">
         <a th:href="@{/signup}">Tilmeld</a>
     </div>
+
+    <div class="navbar-text">
+        <a th:href="@{home}">Profil</a>
+    </div>
+
     <div class="navbar-text" id="login">
         <a th:href="@{/login}">Log Ind</a>
     </div>
+
 
 
 </div>

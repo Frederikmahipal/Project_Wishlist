@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
         <title>Ønskedisen</title>
+        <th:block th:insert="fragments/components :: head">head</th:block>
+        <link rel="stylesheet" th:href="@{css/wishlist_page.css}">
+
+        <style>
+            li{
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
-        <header><h1>Hello world</h1></header>
-        <main>
-            <p>Hello <span th:text="${user.toString()}" th:remove="tag"></span>!</p>
-        </main>
-        <footer>
-        </footer>
+
+    <header th:replace="fragments/components :: navbar"></header>
+
+    <main>
+        <h1 class="center">Din oversigt</h1>
+
+            <div class="all_wishlists">
+                <h2>Dine ønskerlister</h2>
+
+                <ul> <!-- th:each="wishlist : ${wishlists}">
+                    <li> <a th:href="#" th:text="${wistlist.name}"></a> </li> -->
+                    <li> <a href="#">List 1</a> </li>
+                    <li> <a href="#">List 2</a> </li>
+                    <li> <a href="#">List 3</a> </li>
+
+                </ul>
+
+            </div>
+
+        <div class="new_wishlist">
+            <h2>Ny ønskeliste</h2>
+
+            <a href="#">Ny ønskeliste!</a>
+
+        </div>
+
+
+
+    </main>
+
+
+
+    <footer th:replace="fragments/components :: footer"></footer>
     </body>
 </html>
