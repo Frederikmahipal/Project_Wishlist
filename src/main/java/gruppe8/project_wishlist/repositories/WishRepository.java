@@ -1,5 +1,6 @@
 package gruppe8.project_wishlist.repositories;
 
+import gruppe8.project_wishlist.models.Wishlist;
 import gruppe8.project_wishlist.services.DatabaseService;
 import gruppe8.project_wishlist.models.Wish;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,29 @@ public class WishRepository {
 
         try{
             preparedStatement = databaseService.getConnection().prepareStatement("SELECT * FROM wishes");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next())  {
+                Wish wish = new Wish(
+                        resultSet.getFloat("price"),
+                        resultSet.getString("title"),
+                        resultSet.getString("url"),
+                        resultSet.getString("note")
+                );
+
+                wishList.add(wish);
+            }
+
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return wishList;
+    }
+    public List<Wish> getAllWishesFromWishlist(Wishlist wishlist){
+        List<Wish> wishList = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+
+        try{
+            preparedStatement = databaseService.getConnection().prepareStatement("SELECT * FROM wishlist.wishes WHERE wishlistId="+ wishlist.getId() + ";");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next())  {
                 Wish wish = new Wish(
