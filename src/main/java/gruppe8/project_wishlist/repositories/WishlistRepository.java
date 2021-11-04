@@ -25,46 +25,6 @@ public class WishlistRepository {
         this.logger = LoggerFactory.getLogger(this.getClass());
     }
 
-    /*public List<Wishlist> getAllWishLists() {
-        PreparedStatement preparedStatement = null;
-
-        try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM wishlist.wishlists");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next())  {
-                Wishlist wishlist = new Wishlist(
-                        resultSet.getString("name"),
-                        resultSet.getInt("id"),
-                        resultSet.getDate("created")
-                );
-
-                listOfWishLists.add(wishlist);
-            }
-
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return listOfWishLists;
-    }*/
-
-
-    public void addWishListToDatabase(Wishlist wishlist, User user){
-        try{
-            // insert into wishlists (userId, name, created) VALUES  (?,?,?)
-            PreparedStatement preparedStatement = databaseService.getConnection().prepareStatement("insert into wishlist.wishlists (userId, name, created) VALUES  (?,?,?)");
-            preparedStatement.setLong(1,wishlist.getId());
-            preparedStatement.setString(2,wishlist.getName());
-            preparedStatement.setTimestamp(3, Timestamp.valueOf(wishlist.getCreated()));
-
-            preparedStatement.execute();
-
-        }catch (SQLException | NullPointerException e){
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-
     public List<Wishlist> getFromUser(User user) {
         List<Wishlist> wishlists = new ArrayList<>();
         try (Connection connection = databaseService.getConnection()) {
@@ -98,8 +58,29 @@ public class WishlistRepository {
             preparedStatement.setTimestamp( 2, Timestamp.valueOf(wishlist.getCreated()) );
             preparedStatement.setLong(3, user.getId());
 
-            Integer changedRows = preparedStatement.executeUpdate();
+            int changedRows = preparedStatement.executeUpdate();
             if (changedRows == 1) { return true; }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean deleteWishlistForUser(Wishlist wishlist, User user) {
+        try (Connection connection = databaseService.getConnection()) {
+            String query = "DELETE FROM wishlists WHERE (id = ? AND userId = ?);";
+            connection.setAutoCommit(false);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1, wishlist.getId());
+            preparedStatement.setLong(2, user.getId());
+
+            int changedRows = preparedStatement.executeUpdate();
+            if (changedRows == 1) {
+                connection.commit();
+                return true;
+            }
+            connection.rollback();
         } catch (SQLException e) {
             logger.error(e.getMessage());
         }

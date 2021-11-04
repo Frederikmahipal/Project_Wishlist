@@ -24,7 +24,7 @@ public class WishlistController {
         this.wishlistService = wishlistService;
     }
 
-    @GetMapping("/wishlists")
+    @GetMapping("/home")
     public String wishlists(
             @RequestParam Optional<String> error,
             @RequestParam Optional<String> success,
@@ -36,22 +36,23 @@ public class WishlistController {
 
         User user = (User) authentication.getPrincipal();
         List<Wishlist> wishlists = wishlistRepository.getFromUser(user);
-        model.addAttribute("wishlists", wishlists);
+        model.addAttribute ("wishlists", wishlists);
         return "wishlists";
     }
 
-    @PostMapping("/wishlists")
-    public String addWishList(WishlistCreationRequest request,
-                              Authentication authentication,
-                              Model model)
+    @PostMapping("/addWishlist")
+    public String addWishList(
+            WishlistCreationRequest request,
+            Authentication authentication,
+            Model model)
     {
         User user = (User) authentication.getPrincipal();
         boolean success = wishlistService.createWishlist(user, request);
 
         if (success) {
-            return "redirect:/wishlists?success";
+            return "redirect:/home?success";
         }
-        return "redirect:/wishlists?error";
+        return "redirect:/home?error";
     }
 
     @GetMapping("/wish")

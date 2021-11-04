@@ -17,10 +17,18 @@ public class WishlistService {
 
     public boolean createWishlist(User user, WishlistCreationRequest request) {
         Wishlist wishlist = new Wishlist(
-                request.getName(),
+                request.name(),
                 LocalDateTime.now()
         );
-
         return wishlistRepository.createWishlistForUser(wishlist, user);
+    }
+
+    public boolean deleteWishlist(User user, WishlistDeletionRequest request) {
+        Wishlist wishlist = new Wishlist(
+                request.name(),
+                request.id(),
+                null
+        );
+        return wishlistRepository.deleteWishlistForUser(wishlist, user);
     }
 }
