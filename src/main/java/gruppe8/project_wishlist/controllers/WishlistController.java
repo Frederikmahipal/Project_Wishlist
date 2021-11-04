@@ -38,6 +38,11 @@ public class WishlistController {
         return "wishlists";
     }
 
+    @GetMapping("/wish")
+    public String addWishToList(){
+        return "wish";  
+    }
+
     @PostMapping("/wishlists?add")
     public String addWishList(@RequestParam String name,
                               Authentication authentication,
