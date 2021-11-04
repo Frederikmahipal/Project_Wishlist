@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Ønskedisen</title>
+        <th:block th:insert="fragments/components :: head">head</th:block>
+        <link rel="stylesheet" th:href="@{css/wish.css}">
+
+    </head>
+    <body>
+
+    <header th:replace="fragments/components :: navbar"></header>
+
+    <main>
+
+        <h2 style="text-align: center">Ønskeliste navn: <span>Th text wishlist.name her </span> </h2>
+
+        <div class="flex-box">
+
+
+            <div class="container_all_wishes">
+                <h2>Liste</h2>
+
+            </div>
+
+            <div class="container_create_wishlist">
+                <h2 style="margin-left: 5%">Tilføj et ønske</h2>
+
+                <div>
+
+                  <form>
+
+                      <label class="title">Titel
+                        <input type="text" th:maxlength="200" required>
+                      </label>
+
+                      <label class="url">Link til ønske
+                        <input type="url" th:maxlength="2048" required>
+                      </label><br><br><br>
+
+                      <label class="price">Pris
+                          <input type="number" required>
+                      </label>
+
+                      <label class="note">Note
+                          <textarea th:maxlength="200" rows="4" cols="40"></textarea>
+                      </label>
+
+                      <label class="image">Vælg billede
+                          <input  type="file" title="Test test">
+                      </label>
+
+                      <label class="submit">
+                          <input type="submit" value="Tilføj ønske">
+                      </label>
+
+                  </form>
+
+                </div>
+
+
+                <div>
+
+                    <button class="btn">Færdig</button>
+                    <button class="btn">Slet</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer th:replace="fragments/components :: footer"></footer>
+
+    </body>
+</html>

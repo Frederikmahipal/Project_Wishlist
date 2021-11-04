@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,13 @@ public class WishlistController {
 
     @PostMapping("/wishlists")
     public String addWishList(WishlistCreationRequest request,
+    @GetMapping("/wish")
+    public String addWishToList(){
+        return "wish";
+    }
+
+    @PostMapping("/wishlists?add")
+    public String addWishList(@RequestParam String name,
                               Authentication authentication,
                               Model model)
     {

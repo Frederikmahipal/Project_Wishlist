@@ -1,0 +1,164 @@
+@import "globals.css";
+
+body{
+    margin: 0;
+    background: var(--background-image) no-repeat scroll center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: aliceblue;
+}
+/*
+Flexbox for the entire <div>
+ */
+.flex-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+
+}
+
+
+
+/*
+CSS for everything in the container_create wishlist class
+ */
+
+.container_create_wishlist{
+    margin-top: 2%;
+    width: 75%;
+    height: 15em;
+
+    border-radius: 1em;
+    border: 5px solid var(--border-color);
+}
+
+input[type=text]{
+    width: 175px;
+    background: var(--form-bg-color);
+    border-radius: 0.5em;
+    border: 0.2em solid black;
+    color: aliceblue;
+    margin-left: 4.3em;
+}
+
+input[type=url]{
+    width: 175px;
+    background: var(--form-bg-color);
+    border-radius: 0.5em;
+    border: 0.2em solid black;
+    color: aliceblue;
+    margin-left: 4.3em;
+}
+
+input[type=number]{
+    margin-left: 4.3em;
+    width: 175px;
+    background: var(--form-bg-color);
+    border-radius: 0.5em;
+    border: 0.2em solid black;
+    color: aliceblue;
+}
+
+input[type=submit]{
+    padding: 3vh 20px;
+    background: rgba(255, 255, 255, 1%);
+    border-radius: 0.5em;
+    border: 0.2em solid green;
+    color: aliceblue;
+    font-size: 1.2rem;
+}
+
+input[type=file]{
+    color: transparent;
+}
+
+textarea{
+    background: var(--form-bg-color);
+    border-radius: 0.5em;
+    border: 0.2em solid black;
+    color: aliceblue;
+    resize: none;
+    margin-left: 8.5em;
+}
+
+.title{
+    position: relative;
+    margin-left: 5%;
+    width: 20em;
+}
+
+.url{
+    position: relative;
+    margin-left: 5em;
+    width: 20em;
+}
+
+.price{
+    position: relative;
+    margin-left: 4.8em;
+    width: 5em;
+    top: 2vh;
+}
+
+.note{
+    position: relative;
+    margin-left: 5em;
+    top: 2vh;
+    transform: translate(50%, -10%);
+}
+
+.image{
+    position: relative;
+    margin-left: 8em;
+    bottom: 7.2em;
+}
+
+.submit {
+    position: relative;
+    float: right;
+    margin-right: 15em;
+    bottom: 7vh;
+}
+
+
+/*
+CSS for everything in the container_all_wishes class
+ */
+
+.container_all_wishes{
+    width: 75%;
+    height: 15em;
+
+    border-radius: 1em;
+    border: 5px solid var(--border-color);
+
+}
+
+
+
+/*
+Button css
+ */
+
+.btn    {
+    width: 5em;
+    height: 2em;
+    margin: 1.5em 2em;
+
+    display: inline-block;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-size: 1rem;
+    align-items: center;
+
+    padding-top: 5px;
+    color: aliceblue;
+    border-radius: 2.5em;
+    background: var(--form-bg-color);
+
+}
+
