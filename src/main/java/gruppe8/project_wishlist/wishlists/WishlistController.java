@@ -41,16 +41,7 @@ public class WishlistController {
     }
 
     @PostMapping("/wishlists")
-    public String addWishList(WishlistCreationRequest request){
-        return "wishlists";
-    }
-    @GetMapping("/wish")
-    public String addWishToList(){
-        return "wish";
-    }
-
-    @PostMapping("/wishlists?add")
-    public String addWishList(@RequestParam String name,
+    public String addWishList(WishlistCreationRequest request,
                               Authentication authentication,
                               Model model)
     {
@@ -62,4 +53,10 @@ public class WishlistController {
         }
         return "redirect:/wishlists?error";
     }
+
+    @GetMapping("/wish")
+    public String addWishToList(){
+        return "wish";
+    }
 }
+
