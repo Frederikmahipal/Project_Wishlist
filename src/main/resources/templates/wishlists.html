@@ -2,32 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Wishlists</title>
+    <title>Ønskelister</title>
+    <th:block th:insert="fragments/components :: head">head</th:block>
+    <link rel="stylesheet" th:href="@{/css/wishlists.css}">
 </head>
 <body>
-    <header>
+    <header th:replace="fragments/components :: navbar"></header>
 
-    </header>
-
-    <main>
-        <h2>Create a wishlist!</h2>
-        <form method="post" th:action="@{/wishlist?add}">
-            <label>Name
-                <input type="text" name="name" required>
-            </label>
-
-            <label>Submit
-                <input type="submit">
-            </label>
-        </form>
-
-
+    <main class="container">
+        <div class="wishlists">
+            <h2>Ønskelister</h2>
+            <div th:each="wishlist : ${wishlists}">
+                <p th:text="${wishlist.getName()}"></p>
+            </div>
+        </div>
+        <div class="wishlist-form">
+            <h2>Lav en ny ønskeliste!</h2>
+            <form method="post" th:action="@{/wishlists}">
+                <label>Name
+                    <input type="text" name="name" required>
+                </label>
+                <label>Submit
+                    <input type="submit">
+                </label>
+            </form>
+        </div>
     </main>
 
-
-    <footer>
-
-    </footer>
-
+    <footer th:replace="fragments/components :: footer"></footer>
 </body>
 </html>
