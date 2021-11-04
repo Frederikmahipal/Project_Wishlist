@@ -1,8 +1,11 @@
 
 body{
     margin: 0;
-    background: #D0E4F5 url("../images/blue_mist.jpeg") no-repeat scroll center;
-    background-size: 100% 100%;
+    background: var(--background-image) no-repeat scroll center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .registration_header{
@@ -28,7 +31,7 @@ label{
 }
 
 input {
-    background-color: rgba(208,228,245, 15%);
+    background-color: var(--form-bg-color);
     color: aliceblue;
     border-radius: 2.5em;
     border: 0.2em solid black;

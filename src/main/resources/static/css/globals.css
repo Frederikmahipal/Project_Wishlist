@@ -7,6 +7,11 @@
 
     --background-color: white;
 
-    --border-color:  teal;
+    --border-color: teal;
+
+    --form-bg-color: rgba(208,228,245, 15%);
+
+
+    --background-image: #D0E4F5 url("../images/midnight_mountain.jpeg");
 
 }

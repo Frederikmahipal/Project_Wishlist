@@ -5,11 +5,6 @@
         <th:block th:insert="fragments/components :: head">head</th:block>
         <link rel="stylesheet" th:href="@{css/wishlist_page.css}">
 
-        <style>
-            li{
-                text-decoration: none;
-            }
-        </style>
     </head>
     <body>
 
@@ -17,24 +12,35 @@
 
     <main>
         <h1 class="center">Din oversigt</h1>
+        <div class="container">
 
-            <div class="all_wishlists">
-                <h2>Dine ønskerlister</h2>
+                <div class="container_all_wishlist">
+                    <h2>Dine ønskerlister</h2>
 
-                <ul> <!-- th:each="wishlist : ${wishlists}">
-                    <li> <a th:href="#" th:text="${wistlist.name}"></a> </li> -->
-                    <li> <a href="#">List 1</a> </li>
-                    <li> <a href="#">List 2</a> </li>
-                    <li> <a href="#">List 3</a> </li>
+                    <ul> <!-- th:each="wishlist : ${wishlists}">
+                        <li> <a th:href="#" th:text="${wistlist.name}"></a> </li> -->
+                        <li> <a href="#">List 1</a> </li>
+                        <li> <a href="#">List 2</a> </li>
+                        <li> <a href="#">List 3</a> </li>
 
-                </ul>
+                    </ul>
+
+                </div>
+
+            <div class="container_create_wishlist">
+                <h2>Ny ønskeliste</h2>
+
+                <form method="post" th:action="@{/wishlist?add}">
+                    <label>Navngiv din ønskeliste<br>
+                        <input type="text" name="name" required>
+                    </label>
+
+                    <label>
+                        <input value="Opret" type="submit">
+                    </label>
+                </form>
 
             </div>
-
-        <div class="new_wishlist">
-            <h2>Ny ønskeliste</h2>
-
-            <a href="#">Ny ønskeliste!</a>
 
         </div>
 
@@ -44,6 +50,5 @@
 
 
 
-    <footer th:replace="fragments/components :: footer"></footer>
     </body>
 </html>

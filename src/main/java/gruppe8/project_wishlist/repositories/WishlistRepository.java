@@ -1,6 +1,7 @@
 package gruppe8.project_wishlist.repositories;
 
 
+import gruppe8.project_wishlist.models.Wish;
 import gruppe8.project_wishlist.services.DatabaseService;
 import gruppe8.project_wishlist.models.User;
 import gruppe8.project_wishlist.models.Wishlist;
@@ -17,19 +18,20 @@ import java.util.List;
 @Repository
 public class WishlistRepository {
     private final DatabaseService databaseService;
+    ArrayList<Wishlist> listOfWishLists = new ArrayList<>();
 
     @Autowired
     public WishlistRepository(DatabaseService databaseService) {
         this.databaseService = databaseService;
     }
 
-    /*public List<Wishlist> getAllWishLists() {
+    public List<Wishlist> getAllWishLists() {
         PreparedStatement preparedStatement = null;
 
-        try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM wishlist.wishlists");
+        try {
+            preparedStatement = databaseService.getConnection().prepareStatement("SELECT * FROM wishlist.wishlists");
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next())  {
+            while (resultSet.next()) {
                 Wishlist wishlist = new Wishlist(
                         resultSet.getString("name"),
                         resultSet.getInt("id"),
@@ -39,11 +41,11 @@ public class WishlistRepository {
                 listOfWishLists.add(wishlist);
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return listOfWishLists;
-    }*/
+    }
 
 
     public void addWishListToDatabase(Wishlist wishlist, User user){
