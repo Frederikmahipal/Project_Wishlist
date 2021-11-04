@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">>
 <head th:fragment="head">
-
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
 
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
     <link rel="stylesheet" th:href="@{/css/navigation.css}">
-
-
 </head>
 <body>
 
 <div class="navbar box-border" th:fragment="navbar">
-
     <a th:href="@{/}"><img id="logo" th:src="@{images/StolenLogoVector.svg}" alt="logo"></a>
-
-    <div class="navbar-fill">
-    </div>
+    <div class="navbar-fill"></div>
 
     <div class="navbar-text">
         <a th:href="@{/wishlists}">Ønskelister</a>
@@ -25,21 +19,16 @@
     <div class="navbar-text">
         <a th:href="@{/signup}">Tilmeld</a>
     </div>
-
     <div class="navbar-text">
         <a th:href="@{/home}">Profil</a>
     </div>
-
     <div class="navbar-text" id="login">
         <a th:href="@{/login}">Log Ind</a>
     </div>
-
-
 </div>
 
 
 <footer class="footer box-border" th:fragment="footer">
-
     <div class="footer-wrapper">
         <div class="footer-article">
             <a th:href="@{/login}">OM ØNSKEDISEN</a>
@@ -52,7 +41,6 @@
         </div>
         <a th:href="@{/}"><img id="footer-logo" th:src="@{images/StolenLogoVector.svg}" alt="logo"></a>
     </div>
-
 </footer>
 
 </body>
