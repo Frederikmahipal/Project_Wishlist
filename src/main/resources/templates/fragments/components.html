@@ -14,10 +14,7 @@
 
 <div class="navbar box-border" th:fragment="navbar">
 
-    <a th:href="@{/}"><img id="logo" th:src="@{images/StolenLogo.png}" alt="logo" src=""></a>
-    <div class="navbar-text">
-        <a th:href="@{/}">ØNSKEDISEN</a>
-    </div>
+    <a th:href="@{/}"><img id="logo" th:src="@{images/StolenLogoVector.svg}" alt="logo"></a>
 
     <div class="navbar-fill">
     </div>
@@ -38,17 +35,24 @@
     </div>
 
 
-
 </div>
 
 
 <footer class="footer box-border" th:fragment="footer">
-    <div class="footer-text">
-        <div>
-            <p style="color: var(--primary-text-color)">@Copyright Ønskedisen a/s</p>
-        </div>
 
+    <div class="footer-wrapper">
+        <div class="footer-article">
+            <a th:href="@{/login}">OM ØNSKEDISEN</a>
+            <p>|</p>
+            <a th:href="@{/login}">BETINGELSER</a>
+            <p>|</p>
+            <a th:href="@{/login}">PRIVACY & POLICY</a>
+            <p>|</p>
+            <a th:href="@{/login}">DEL PÅ FACEBOOK</a>
+        </div>
+        <a th:href="@{/}"><img id="footer-logo" th:src="@{images/StolenLogoVector.svg}" alt="logo"></a>
     </div>
+
 </footer>
 
 </body>
