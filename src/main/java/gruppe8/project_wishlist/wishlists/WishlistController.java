@@ -41,7 +41,9 @@ public class WishlistController {
     }
 
     @PostMapping("/wishlists")
-    public String addWishList(WishlistCreationRequest request,
+    public String addWishList(WishlistCreationRequest request){
+        return "wishlists";
+    }
     @GetMapping("/wish")
     public String addWishToList(){
         return "wish";
