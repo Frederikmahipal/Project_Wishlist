@@ -12,20 +12,21 @@
 
     <main>
         <h1 class="center">Din oversigt</h1>
+
         <div class="container">
 
-                <div class="container_all_wishlist">
-                    <h2>Dine ønskerlister</h2>
+            <div class="container_all_wishlist">
+                <h2 style="text-align: center">Dine ønskerlister</h2>
 
-                    <ul> <!-- th:each="wishlist : ${wishlists}">
+                <ul> <!-- th:each="wishlist : ${wishlists}">
                         <li> <a th:href="#" th:text="${wistlist.name}"></a> </li> -->
-                        <li> <a href="#">List 1</a> </li>
-                        <li> <a href="#">List 2</a> </li>
-                        <li> <a href="#">List 3</a> </li>
+                    <li> <a href="#">List 1</a> </li>
+                    <li> <a href="#">List 2</a> </li>
+                    <li> <a href="#">List 3</a> </li>
 
-                    </ul>
+                </ul>
 
-                </div>
+            </div>
 
             <div class="container_create_wishlist">
                 <h2>Ny ønskeliste</h2>
@@ -48,7 +49,7 @@
 
     </main>
 
-
+    <footer th:replace="fragments/components :: footer"></footer>
 
     </body>
 </html>

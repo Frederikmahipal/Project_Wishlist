@@ -22,12 +22,10 @@ body{
 
     color: aliceblue;
     margin-left: 20em;
-    margin-right: 20em;
-    flex-grow: 1;
+    margin-right: 21em;
 }
 
 .container_create_wishlist{
-
 
 }
 
@@ -55,7 +53,6 @@ li > a{
     text-decoration: none;
     cursor: pointer;
     font-size: 1.6rem;
-
     padding: 0 3.4em 0 3.4em ;
     margin: -3.4em;
 }
@@ -64,25 +61,14 @@ a:hover{
     color: var(--primary-text-color-hover);
 }
 
-
-
-
-label{
-    font-size: 1.6rem;
-
-}
-
-form > label{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
 form > label > input{
     background-color: var(--form-bg-color);
     color: aliceblue;
     border-radius: 2.5em;
     border: 0.2em solid black;
+}
+label{
+    font-size: 1.6rem;
 }
 
 input[type=text]{
@@ -92,6 +78,11 @@ input[type=text]{
 }
 
 input[type=submit]{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
     width: 8em;
     height: 2em;
     margin-top: 1em;
