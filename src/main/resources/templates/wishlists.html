@@ -45,6 +45,15 @@
 
             </div>
 
+            <div th:each="wishlist : ${wishlists}">
+                    <button th:href="@{/deleteWhistList/{name}(name=${'/whislist/' + wishlist.getName})}" class="btn_delete">Slet</button>
+
+
+            </div>
+
+
+
+
         </div>
 
     </main>

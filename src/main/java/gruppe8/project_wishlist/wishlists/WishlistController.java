@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,5 +69,14 @@ public class WishlistController {
     public String wish(){
         return "wish";
     }
+
+
+
+    @GetMapping("/deleteWishlist/{name}")
+    public String deleteWisList(@PathVariable (value = "name") User name, User user){
+        this.wishlistService.deleteWishlist(name, user);
+        return "redirect:/home";
+    }
+
 }
 
