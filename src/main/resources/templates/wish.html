@@ -30,6 +30,15 @@
                 </ul>
             -->
 
+                <ul th:each="wish : ${wishes}">
+                    <li>
+                        <p th:text="${wish.getTitle()}"></p>
+                        <p th:text="${wish.getUrl()}"></p>
+                        <p th:text="${wish.getPrice()}"></p>
+                        <p th:text="${wish.getNote()}"></p>
+                    </li>
+                </ul>
+
             </div>
 
             <div class="container_create_wishlist">
@@ -37,7 +46,8 @@
 
                 <div>
 
-                  <form method="post" th:action="@{/addWish}">
+                  <form method="post" th:action="@{/addWish}" enctype="multipart/form-data">
+                      <input type="hidden" id="wishlistId" name="wishlistId" th:value="${wishlistId}">
 
                       <label class="title">Titel
                         <input type="text" name="title" th:maxlength="200" required>

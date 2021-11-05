@@ -1,34 +1,39 @@
 package gruppe8.project_wishlist.models;
 
-public class Wish {
-    private int id;
-    private float price;
-    private String title, url, note;
+import org.springframework.core.io.Resource;
 
-    public Wish(float price, String title, String url, String note) {
+import java.sql.Blob;
+import java.time.LocalDateTime;
+
+public class Wish {
+    private Long id;
+    private Double price;
+    private String title, url, note;
+    private Resource image;
+    private LocalDateTime created;
+
+    public Wish() {}
+
+    public Wish(double price, String title, String url, String note, Resource image) {
         this.price = price;
         this.title = title;
         this.url = url;
         this.note = note;
     }
 
-    public Wish(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -54,6 +59,22 @@ public class Wish {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Resource getImage() {
+        return image;
+    }
+
+    public void setImage(Resource image) {
+        this.image = image;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     @Override
