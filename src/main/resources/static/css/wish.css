@@ -135,9 +135,13 @@ CSS for everything in the container_all_wishes class
 
     border-radius: 1em;
     border: 5px solid var(--border-color);
-
 }
 
+.container_all_wishes image{
+    width: 50px;
+    height: 50px;
+    background-color: grey;
+}
 
 /*
 Button css
