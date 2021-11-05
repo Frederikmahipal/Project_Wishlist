@@ -27,26 +27,26 @@
 
                 <div>
 
-                  <form>
+                  <form method="post" th:action="@{/addWish}">
 
                       <label class="title">Titel
-                        <input type="text" th:maxlength="200" required>
+                        <input type="text" name="title" th:maxlength="200" required>
                       </label>
 
                       <label class="url">Link til ønske
-                        <input type="url" th:maxlength="2048" required>
+                        <input type="url" name="url" th:maxlength="2048" required>
                       </label><br><br><br>
 
                       <label class="price">Pris
-                          <input type="number" required>
+                          <input name="price" type="number" required>
                       </label>
 
                       <label class="note">Note
-                          <textarea th:maxlength="200" rows="4" cols="40"></textarea>
+                          <textarea name="note" th:maxlength="2000" rows="4" cols="40"></textarea>
                       </label>
 
                       <label class="image">Vælg billede
-                          <input  type="file" title="Test test">
+                          <input name="image" type="file" title="Test test">
                       </label>
 
                       <label class="submit">
