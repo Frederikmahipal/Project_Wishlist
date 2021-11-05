@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ønskedisen</title>
+    </head>
+    <body>
+        <header><h1>Hello world</h1></header>
+        <main>
+            <p>Hello <span th:text="${user.toString()}" th:remove="tag"></span>!</p>
+        </main>
+        <h1> DIN OVERSIGT </h1>
+
+        <h2>Din(e) ønskeliste(r)</h2>
+        <button> Ønskeliste 1</button>
+        <button> Ønskeliste 2</button>
+        <button> Ønskeliste 3</button>
+        <footer>
+        </footer>
+    </body>
+</html>
