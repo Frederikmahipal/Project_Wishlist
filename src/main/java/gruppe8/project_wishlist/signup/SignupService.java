@@ -19,11 +19,11 @@ public class SignupService {
 
     public Boolean register(SignupRequest request) {
         User user = new User(
-                request.getFullName(),
-                request.getEmail(),
-                passwordEncoder.encode( request.getPassword() )
+                request.fullName(),
+                request.email(),
+                passwordEncoder.encode( request.password() )
         );
-        if (validator.isEmailValid(request.getEmail())){
+        if (validator.isEmailValid(request.email())){
         return userRepository.create(user);
 
         }
