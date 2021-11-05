@@ -86,4 +86,21 @@ public class WishlistRepository {
         }
         return false;
     }
+
+    public boolean userOwnsWishlist(User user, Long wishlistId) {
+        try (Connection connection = databaseService.getConnection()) {
+            String query = "SELECT EXISTS(SELECT wishlists.name FROM wishlists WHERE (wishlists.userId = ? AND wishlists.id = ?));";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1, user.getId());
+            preparedStatement.setLong(2, wishlistId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1) == 1;
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+        }
+        return false;
+    }
 }
