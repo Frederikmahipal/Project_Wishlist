@@ -24,7 +24,7 @@ public class WishlistController {
         this.wishlistService = wishlistService;
     }
 
-    @GetMapping("/home")
+    @GetMapping("/wishlists")
     public String wishlists(
             @RequestParam Optional<String> error,
             @RequestParam Optional<String> success,

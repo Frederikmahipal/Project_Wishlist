@@ -15,7 +15,7 @@ public class LoginController {
                         @RequestParam Optional<String> success,
                         Model model)
     {
-        if (success.isPresent()) { return "redirect:/home"; }
+        if (success.isPresent()) { return "redirect:/wishlists"; }
         if (error.isPresent()) { model.addAttribute("error", true); }
         if (signupSuccess.isPresent()) { model.addAttribute("signupSuccess", true); }
         return "login";
