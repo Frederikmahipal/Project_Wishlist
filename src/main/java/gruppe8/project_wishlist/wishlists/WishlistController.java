@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -55,8 +56,13 @@ public class WishlistController {
         return "redirect:/home?error";
     }
 
-    @GetMapping("/wish")
-    public String addWishToList(){
+    @GetMapping("/wishlist/{wishlistId}")
+    public String showWishlist(@PathVariable Long wishlistId, Model model, Authentication authentication) {
+        return "wish";
+    }
+
+    @PostMapping("/addWish")
+    public String addWish(WishCreationRequest request, Model model, Authentication authentication) {
         return "wish";
     }
 }
