@@ -65,5 +65,10 @@ public class WishlistController {
     public String addWish(WishCreationRequest request, Model model, Authentication authentication) {
         return "wish";
     }
+
+    @GetMapping("/wish")
+    public String wish(){
+        return "wish";
+    }
 }
 

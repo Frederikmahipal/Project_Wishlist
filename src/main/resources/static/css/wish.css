@@ -113,8 +113,8 @@ textarea{
 
 .image{
     position: relative;
-    margin-left: 8em;
-    bottom: 7.2em;
+    float: right;
+    bottom: 4em;
 }
 
 .submit {
