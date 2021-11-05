@@ -143,6 +143,11 @@ CSS for everything in the container_all_wishes class
     background-color: grey;
 }
 
+
+li {
+    list-style-type: none;
+}
+
 /*
 Button css
  */
