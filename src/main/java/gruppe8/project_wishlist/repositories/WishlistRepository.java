@@ -75,6 +75,7 @@ public class WishlistRepository {
             preparedStatement.setLong(1, wishlist.getId());
             preparedStatement.setLong(2, user.getId());
 
+            System.out.println("deletion of wishlist initialized");
             int changedRows = preparedStatement.executeUpdate();
             if (changedRows == 1) {
                 connection.commit();

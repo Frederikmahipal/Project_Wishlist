@@ -50,6 +50,7 @@ public class WishlistController {
     {
         User user = (User) authentication.getPrincipal();
         boolean success = wishlistService.createWishlist(user, request);
+        System.out.println("Wishlist added to user");
 
         if (success) {
             return "redirect:/home?success";
@@ -72,6 +73,7 @@ public class WishlistController {
         User user = (User) authentication.getPrincipal();
 
         wishlistService.createWish(request, user);
+        System.out.println("request.wishlistId() = " + request.wishlistId());
         System.out.println("request.title() = " + request.title());
         System.out.println("request.url() = " + request.url());
         System.out.println("request.price() = " + request.price());
@@ -82,12 +84,21 @@ public class WishlistController {
     }
 
 
-
+    /*
     @GetMapping("/deleteWishlist/{name}")
     public String deleteWisList(@PathVariable (value = "name") User name, User user){
         this.wishlistService.deleteWishlist(name, user);
         return "redirect:/home";
     }
+    */
 
+    //public boolean deleteWishlistForUser(Wishlist wishlist, User user) {
+    @PostMapping("/deleteWishlist")
+    public String deleteWishlist(WishlistDeletionRequest request, Authentication authentication){
+        User user = (User) authentication.getPrincipal();
+
+        this.wishlistService.deleteWishlist(user, request);
+        return "redirect:/home";
+    }
 }
 

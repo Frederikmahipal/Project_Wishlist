@@ -33,10 +33,10 @@ public class WishlistService {
         return wishlistRepository.createWishlistForUser(wishlist, user);
     }
 
-    public boolean deleteWishlist(User user, User request) {
+    public boolean deleteWishlist(User user, WishlistDeletionRequest request) {
         Wishlist wishlist = new Wishlist(
-                request.getFullName(),
-                request.getId(),
+                request.name(),
+                request.id(),
                 null
         );
         return wishlistRepository.deleteWishlistForUser(wishlist, user);
