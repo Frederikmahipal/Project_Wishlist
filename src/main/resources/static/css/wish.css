@@ -7,7 +7,7 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    color: aliceblue;
+    color: var(--secondary-text-color);
 }
 /*
 Flexbox for the entire <div>
@@ -40,7 +40,7 @@ input[type=text]{
     background: var(--form-bg-color);
     border-radius: 0.5em;
     border: 0.2em solid black;
-    color: aliceblue;
+    color: var(--secondary-text-color);
     margin-left: 4.3em;
 }
 
@@ -49,7 +49,7 @@ input[type=url]{
     background: var(--form-bg-color);
     border-radius: 0.5em;
     border: 0.2em solid black;
-    color: aliceblue;
+    color: var(--secondary-text-color);
     margin-left: 4.3em;
 }
 
@@ -59,7 +59,7 @@ input[type=number]{
     background: var(--form-bg-color);
     border-radius: 0.5em;
     border: 0.2em solid black;
-    color: aliceblue;
+    color: var(--secondary-text-color);
 }
 
 input[type=submit]{
@@ -67,7 +67,7 @@ input[type=submit]{
     background: rgba(255, 255, 255, 1%);
     border-radius: 0.5em;
     border: 0.2em solid green;
-    color: aliceblue;
+    color: var(--secondary-text-color);
     font-size: 1.2rem;
 }
 
@@ -80,7 +80,7 @@ textarea{
     background: var(--form-bg-color);
     border-radius: 0.5em;
     border: 0.2em solid black;
-    color: aliceblue;
+    color: var(--secondary-text-color);
     resize: none;
     margin-left: 8.5em;
 }
@@ -165,7 +165,7 @@ Button css
     align-items: center;
 
     padding-top: 5px;
-    color: aliceblue;
+    color: var(--secondary-text-color);
     border-radius: 2.5em;
     background: var(--form-bg-color);
 
@@ -173,7 +173,7 @@ Button css
 
 .btn > a{
     text-decoration: none;
-    color: aliceblue;
+    color: var(--secondary-text-color);
 }
 
 
