@@ -12,7 +12,7 @@ body{
 
 .center{
     text-align: center;
-    color: aliceblue;
+    color: var(--secondary-text-color);
 }
 
 .container{
@@ -20,7 +20,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
 
-    color: aliceblue;
+    color: var(--secondary-text-color);
     margin-left: 20em;
     margin-right: 21em;
 }
@@ -49,7 +49,7 @@ ul > li{
 
 li > a{
 
-    color: aliceblue;
+    color: var(--secondary-text-color);
     text-decoration: none;
     cursor: pointer;
     font-size: 1.6rem;
@@ -63,7 +63,7 @@ a:hover{
 
 form > label > input{
     background-color: var(--form-bg-color);
-    color: aliceblue;
+    color: var(--secondary-text-color);
     border-radius: 2.5em;
     border: 0.2em solid black;
 }

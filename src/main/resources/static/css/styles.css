@@ -10,7 +10,7 @@ body{
 
 .registration_header{
     text-align: center;
-    color: aliceblue;
+    color: var(--secondary-text-color);
 
 }
 
@@ -27,12 +27,12 @@ body{
 
 }
 label{
-    color: aliceblue;
+    color: var(--secondary-text-color);
 }
 
 input {
     background-color: var(--form-bg-color);
-    color: aliceblue;
+    color: var(--secondary-text-color);
     border-radius: 2.5em;
     border: 0.2em solid black;
     width: 20em;

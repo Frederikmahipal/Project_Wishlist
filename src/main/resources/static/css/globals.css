@@ -3,7 +3,9 @@
     --primary-text-color: #00739F;
     --primary-text-color-hover: #008abf;
 
-    --secondary-text-color: black;
+    --secondary-text-color: #303030;
+
+    --tertiary-text-color: #ededed;
 
     --background-color: white;
 
@@ -11,9 +13,13 @@
 
     --form-bg-color: rgba(208,228,245, 15%);
 
-
-    --background-image: #D0E4F5 url("../images/midnight_mountain.jpeg");
-
+    background-color: #b8dfee;
+    background-image: url("../images/misty_mountains_modified.jpg");
+    background-repeat: no-repeat;
+    background-height: 400px;
+    background-width: max(2048px,100%);
+    background-position: center bottom;
+    font-family: Helvetica, sans-serif;
 
 }
 body{
