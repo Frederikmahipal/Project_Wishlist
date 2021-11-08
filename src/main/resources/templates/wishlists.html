@@ -26,6 +26,11 @@
 
                 <ul th:each="wishlist : ${wishlists}">
                     <li><a th:href="${'/wishlist/'+wishlist.getId()}" th:text="${wishlist.getName()}"></a></li>
+                    <form method="post" th:action="@{/deleteWishlist}">
+                        <button >Slet</button>
+                        <input type="hidden" name="id" th:value="${wishlist.getId()}">
+                    </form>
+
                 </ul>
 
             </div>
@@ -44,6 +49,7 @@
                 </form>
 
             </div>
+
 
         </div>
 

@@ -91,4 +91,11 @@ input[type=submit]{
 
 }
 
+.btn_delete{
+    color: red;
+    background-color: yellow;
+    height: 2em;
+    width: 2.5em;
+}
+
 

@@ -20,7 +20,7 @@
     <div class="centering_container">
         <form method="POST" th:action="@{/login}">
             <label>Email
-                <input type="email" name="email" required>
+                <input type="email" id="emailInput" name="email" required>
             </label>
 
             <label>Password
@@ -28,7 +28,7 @@
                 <input type="checkbox" onclick="passwordVisibility()">
             </label>
 
-            <input type="submit" required>
+            <input type="submit" onclick="checkLoginInput()" required>
         </form>
     </div>
 
