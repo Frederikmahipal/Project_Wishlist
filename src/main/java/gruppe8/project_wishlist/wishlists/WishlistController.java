@@ -83,15 +83,6 @@ public class WishlistController {
         return "redirect:/wishlist/"+wishlistId;
     }
 
-
-    /*
-    @GetMapping("/deleteWishlist/{name}")
-    public String deleteWisList(@PathVariable (value = "name") User name, User user){
-        this.wishlistService.deleteWishlist(name, user);
-        return "redirect:/home";
-    }
-    */
-
     //public boolean deleteWishlistForUser(Wishlist wishlist, User user) {
     @PostMapping("/deleteWishlist")
     public String deleteWishlist(WishlistDeletionRequest request, Authentication authentication){
@@ -99,6 +90,14 @@ public class WishlistController {
 
         this.wishlistService.deleteWishlist(user, request);
         return "redirect:/home";
+    }
+
+    @PostMapping("/deleteWish")
+    public String deleteWish(WishDeletionRequest request, Authentication authentication){
+        User user = (User) authentication.getPrincipal();
+
+        this.wishlistService.deleteWish(user, request);
+        return "redirect:/wishlist/"+request.wishlistId();
     }
 }
 
