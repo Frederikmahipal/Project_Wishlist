@@ -1,4 +1,4 @@
-package gruppe8.project_wishlist.wishlists;
+package gruppe8.project_wishlist.wishes;
 
 import org.springframework.web.multipart.MultipartFile;
 
