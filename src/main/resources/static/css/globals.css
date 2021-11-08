@@ -14,7 +14,7 @@
     --form-bg-color: rgba(208,228,245, 15%);
 
     background-color: #b8dfee;
-    background-image: url("../images/misty_mountains_modified.jpg");
+    --background-image: url("../images/misty_mountains_modified.jpg");
     background-repeat: no-repeat;
     background-height: 400px;
     background-width: max(2048px,100%);
