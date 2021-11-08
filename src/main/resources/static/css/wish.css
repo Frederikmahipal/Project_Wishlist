@@ -29,7 +29,7 @@ CSS for everything in the container_create wishlist class
 .container_create_wishlist{
     margin-top: 2%;
     width: 75%;
-    height: 15em;
+    height: fit-content;
 
     border-radius: 1em;
     border: 5px solid var(--border-color);
@@ -131,7 +131,7 @@ CSS for everything in the container_all_wishes class
 
 .container_all_wishes{
     width: 75%;
-    height: 15em;
+    height: fit-content;
 
     border-radius: 1em;
     border: 5px solid var(--border-color);

@@ -78,7 +78,7 @@ public class WishRepository {
         PreparedStatement preparedStatement = null;
 
         try {
-            String query = "SELECT price, title, url, note, created FROM wishes WHERE wishlistId = ?;";
+            String query = "SELECT price, title, url, note, id, created FROM wishes WHERE wishlistId = ?;";
             preparedStatement = databaseService.getConnection().prepareStatement(query);
             preparedStatement.setLong(1, wishlist.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -89,6 +89,7 @@ public class WishRepository {
                 wish.setTitle(resultSet.getString("title"));
                 wish.setUrl(resultSet.getString("url"));
                 wish.setNote(resultSet.getString("note"));
+                wish.setId(resultSet.getLong("id"));
                 wish.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
                 /*wish.setImage(resultSet.getBlob(  "wishPictures.pictureData"));*/
                 wishList.add(wish);
@@ -121,12 +122,11 @@ public class WishRepository {
 
     public boolean deleteWishFromWishlist(Wish wish) {
         try (Connection connection = databaseService.getConnection()) {
-            String query = "DELETE FROM wishlists WHERE (id = ?);";
+            String query = "DELETE FROM wishlist.wishes WHERE (id = ?);";
             connection.setAutoCommit(false);
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setLong(1, wish.getId());
-
             int changedRows = preparedStatement.executeUpdate();
             if (changedRows == 1) {
                 connection.commit();

@@ -28,8 +28,11 @@
                         <p th:text="${wish.getPrice()}"></p>
                         <p th:text="${wish.getNote()}"></p>
                         <form method="post" th:action="@{/deleteWish}">
-                            <button >Slet</button>
+                            <label>
+                            <input type="hidden" name="wishId" th:value="${wish.getId()}">
                             <input type="hidden" name="wishlistId" th:value="${wishlistId}">
+                            <input type="submit" value="Slet">
+                            </label>
                         </form>
                         <hr>
                     </li>

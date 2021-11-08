@@ -62,6 +62,7 @@ public class WishlistController {
     public String showWishlist(@PathVariable Long wishlistId, Model model, Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         List<Wish> wishes = wishlistService.getWishes(user, wishlistId);
+        System.out.println(wishes);
 
         model.addAttribute("wishes", wishes);
         model.addAttribute("wishlistId", wishlistId);
@@ -73,17 +74,10 @@ public class WishlistController {
         User user = (User) authentication.getPrincipal();
 
         wishlistService.createWish(request, user);
-        System.out.println("request.wishlistId() = " + request.wishlistId());
-        System.out.println("request.title() = " + request.title());
-        System.out.println("request.url() = " + request.url());
-        System.out.println("request.price() = " + request.price());
-        System.out.println("request.note() = " + request.note());
-        System.out.println("request.image().getOriginalFilename() = " + request.image().getOriginalFilename());
 
         return "redirect:/wishlist/"+wishlistId;
     }
 
-    //public boolean deleteWishlistForUser(Wishlist wishlist, User user) {
     @PostMapping("/deleteWishlist")
     public String deleteWishlist(WishlistDeletionRequest request, Authentication authentication){
         User user = (User) authentication.getPrincipal();

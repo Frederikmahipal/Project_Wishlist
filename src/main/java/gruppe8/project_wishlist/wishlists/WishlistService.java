@@ -70,18 +70,12 @@ public class WishlistService {
     }
 
     public boolean deleteWish(User user, WishDeletionRequest request) {
-        System.out.println("click");
-
         boolean userOwnsWishlist = wishlistRepository.userOwnsWishlist(user, request.wishlistId());
         if (!userOwnsWishlist) { return false; }
 
         Wish wish = new Wish();
-        wish.setPrice(request.price());
-        wish.setCreated(LocalDateTime.now());
-        wish.setNote(request.note());
-        wish.setTitle(request.title());
-        wish.setUrl(request.url());
-        wish.setId(request.wishlistId());
+
+        wish.setId(request.wishId());
         //wish.setImage(request.image().getResource());
 
         return wishRepository.deleteWishFromWishlist(wish);
