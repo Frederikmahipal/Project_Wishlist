@@ -15,14 +15,14 @@
     <div class="navbar-fill"></div>
 
     <div class="navbar-text">
-        <a th:href="@{/wishlists}">Ønskelister</a>
-    </div>
-    <div class="navbar-text">
         <a th:href="@{/signup}">Tilmeld</a>
     </div>
     <div class="navbar-text">
-        <a th:href="@{/home}">Profil</a>
+        <a th:href="@{/home}">Ønskelister</a>
     </div>
+    <!--
+   <p class="navbar-text" th:text="${user.getFullName()}"></p>
+    -->
     <div class="navbar-text" id="login">
         <a th:href="@{/login}">Log Ind</a>
     </div>
