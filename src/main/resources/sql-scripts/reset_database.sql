@@ -18,7 +18,7 @@ create table users
     fullName       varchar(255) not null,
     argon2Password varchar(255) not null,
     created        datetime     not null,
-    pictureData    blob         null,
+    pictureData    mediumblob       null,
     constraint email
         unique (email)
 )
@@ -57,7 +57,7 @@ create table wishes
     price       decimal(9, 2) null,
     url         varchar(2048) null,
     note        varchar(5000) null,
-    pictureData blob          null,
+    pictureData mediumblob    null,
     constraint FKWishesWishlistId
         foreign key (wishlistId) references wishlists (id)
             on delete cascade
