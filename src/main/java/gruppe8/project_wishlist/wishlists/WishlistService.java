@@ -35,8 +35,8 @@ public class WishlistService {
 
     public boolean deleteWishlist(User user, WishlistDeletionRequest request) {
         Wishlist wishlist = new Wishlist(
-                request.name(),
-                request.id(),
+                null,
+                request.wishlistId(),
                 null
         );
         return wishlistRepository.deleteWishlistForUser(wishlist, user);

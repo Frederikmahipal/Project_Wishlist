@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Repository;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +27,8 @@ public class WishRepository {
     public boolean createWish(Wishlist wishlist, Wish wish) {
         //https://stackoverflow.com/questions/1915166/how-to-get-the-insert-id-in-jdbc#1915197
         try (Connection connection = databaseService.getConnection()) {
-            String query =  "INSERT INTO wishes (wishlistid, created, title, price, url, note)" +
-                            "VALUES (?, ?, ?, ?, ?, ?);";
+            String query =  "INSERT INTO wishes (wishlistid, created, title, price, url, note, pictureData)" +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setLong(1, wishlist.getId());
             preparedStatement.setTimestamp(2, Timestamp.valueOf( wish.getCreated() ));
@@ -34,6 +36,7 @@ public class WishRepository {
             preparedStatement.setDouble(4, wish.getPrice());
             preparedStatement.setString(5, wish.getUrl());
             preparedStatement.setString(6, wish.getNote());
+            preparedStatement.setBlob(7, wish.getImage().getInputStream());
 
             int updatedRows = preparedStatement.executeUpdate();
             if (updatedRows != 1) {
@@ -41,7 +44,7 @@ public class WishRepository {
                 return false;
             }
             return true;
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             logger.error(e.getMessage());
         }
         return false;
@@ -76,21 +79,32 @@ public class WishRepository {
 
     public boolean deleteWishFromWishlist(Wish wish) {
         try (Connection connection = databaseService.getConnection()) {
-            String query = "DELETE FROM wishlist.wishes WHERE (id = ?);";
-            connection.setAutoCommit(false);
+            String query = "DELETE FROM wishes WHERE (id = ?);";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setLong(1, wish.getId());
             int changedRows = preparedStatement.executeUpdate();
             if (changedRows == 1) {
-                connection.commit();
                 return true;
             }
-            connection.rollback();
         } catch (SQLException e) {
             logger.error(e.getMessage());
         }
         return false;
     }
 
+    public Blob getImageFromWishId(Long wishId) {
+        try (Connection connection = databaseService.getConnection()) {
+            String query = "SELECT pictureData FROM wishes WHERE id = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1, wishId);
+            ResultSet resultset = preparedStatement.executeQuery();
+            resultset.next();
+
+            return resultset.getBlob(1);
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+        }
+        return null;
+    }
 }

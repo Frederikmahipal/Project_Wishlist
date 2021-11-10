@@ -1,0 +1,11 @@
+main {
+    min-height: 100vh;
+}
+
+.background-image {
+    background-image: url("/images/misty_mountains_squished.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

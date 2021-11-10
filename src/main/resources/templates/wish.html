@@ -1,96 +1,90 @@
 <!DOCTYPE html>
-    <html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Ønskedisen</title>
-        <th:block th:insert="fragments/components :: head">head</th:block>
-        <script type="text/javascript" th:src="@{/js/functions.js}"></script>
-        <link rel="stylesheet" th:href="@{/css/wish.css}">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/components :: head">head</th:block>
+    <title>Ønskedisen</title>
+</head>
+<body>
+<header th:replace="fragments/components :: navbar(user=${user})"></header>
+<main class="background-image container-fluid py-5 shadow">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12 mb-3" th:each="wish : ${wishes}">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="ratio ratio-1x1">
+                            <img class="img-fluid w-auto" th:src="'/wish/image/'+${wish.getId()}" alt="wish picture">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title" th:text="${wish.getTitle()}"></h4>
+                        <p class="card-subtitle" th:text="${wish.getPrice()+'kr'}"></p>
+                        <p class="card-text" th:text="${wish.getNote()}"></p>
 
-    </head>
-    <body>
+                        <div class="row mx-auto justify-content-between">
+                            <a class="col-auto btn btn-primary" th:href="${wish.getUrl()}">Åben link</a>
+                            <button class="col-2 btn btn-danger bi-trash" type="submit"
+                                    th:form="'delete'+${wish.getId()}"></button>
+                        </div>
 
-    <header th:replace="fragments/components :: navbar"></header>
-
-    <main>
-
-        <h2 style="text-align: center">Din ønskeliste: </h2>
-
-        <div class="flex-box">
-
-
-            <div class="container_all_wishes">
-                <h2>Ønsker på din liste</h2>
-
-                <ul th:each="wish : ${wishes}">
-                    <li>
-                        <p th:text="${wish.getTitle()}"></p>
-                        <a target="_blank" th:href="${wish.getUrl()}" th:text="${wish.getUrl()}"></a>
-                        <p th:text="${wish.getPrice()}"></p>
-                        <p th:text="${wish.getNote()}"></p>
-                        <form method="post" th:action="@{/deleteWish}">
-                            <label>
+                        <form class="visually-hidden" th:id="'delete'+${wish.getId()}" method="post"
+                              th:action="@{/deleteWish}">
                             <input type="hidden" name="wishId" th:value="${wish.getId()}">
                             <input type="hidden" name="wishlistId" th:value="${wishlistId}">
-                            <input type="submit" value="Slet">
-                            </label>
                         </form>
-                        <hr>
-                    </li>
-                </ul>
-
-            </div>
-
-            <div class="container_create_wishlist">
-                <h2 style="margin-left: 5%">Tilføj et ønske</h2>
-
-                <div>
-                    <!-- The id tag in this form is only used as references to Javascript-->
-                  <form method="post" th:action="@{/addWish}" enctype="multipart/form-data">
-                      <input type="hidden" id="wishlistId" name="wishlistId" th:value="${wishlistId}">
-
-                      <label class="title">Titel
-                        <input type="text" id="title" name="title" th:maxlength="200" required>
-                      </label>
-
-                      <label class="url">Link til ønske
-                        <input type="url" id="url" name="url" th:maxlength="2048" required>
-                      </label><br><br><br>
-
-                      <label class="price">Pris
-                          <input name="price" id="price" type="number" required>
-                      </label>
-
-                      <label class="note">Note
-                          <textarea name="note" id="note" th:maxlength="2000" rows="4" cols="40"></textarea>
-                      </label>
-
-                      <label class="image">Vælg billede
-                          <input name="image" type="file">
-                      </label>
-
-                      <label class="submit">
-                          <input type="submit" value="Tilføj ønske" onclick="checkWishInputs()">
-                      </label>
-
-                  </form>
-
+                    </div>
                 </div>
-
-
-                <div>
-
-                    <button class="btn">Færdig</button>
-                    <button class="btn"> <a th:href="@{/home}">Gå tilbage</a></button>
-
-                </div>
-
             </div>
-
         </div>
-
-    </main>
-
-    <footer th:replace="fragments/components :: footer"></footer>
-
-    </body>
+        <div class="row mb-5">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Tilføj ønske</h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="fw-bold" method="post" th:action="@{/addWish}" enctype="multipart/form-data">
+                            <input type="hidden" id="wishlistId" name="wishlistId" th:value="${wishlistId}">
+                            <div class="row mb-3">
+                                <div class="col-md form-check">
+                                    <label class="form-label" for="title">Titel</label>
+                                    <input class="form-control" type="text" id="title" name="title" th:maxlength="200"
+                                           required>
+                                </div>
+                                <div class="col-md form-check">
+                                    <label class="form-label" for="price">Pris</label>
+                                    <input class="form-control" name="price" id="price" type="number" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md form-check">
+                                    <label class="form-label" for="url">Link til ønske</label>
+                                    <input class="form-control" type="url" id="url" name="url" th:maxlength="2048"
+                                           required>
+                                </div>
+                                <div class="col-md form-check">
+                                    <label class="form-label" for="image">Vælg billede</label>
+                                    <input class="form-control" name="image" id="image" type="file">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <label class="form-label" for="note">Note</label>
+                                    <textarea class="form-control" name="note" id="note" th:maxlength="2000"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <button class="form-control btn btn-primary" type="submit">Tilføj ønske</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/components :: footer"></footer>
+</body>
 </html>

@@ -4,6 +4,8 @@ import gruppe8.project_wishlist.models.User;
 import gruppe8.project_wishlist.repositories.WishlistRepository;
 import gruppe8.project_wishlist.repositories.UserRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-    private final UserRepository userRepository;
-    private final WishlistRepository wishlistRepository;
+    private final Logger logger;
 
-    private MainController(UserRepository userRepository, WishlistRepository wishlistRepository) {
-        this.userRepository = userRepository;
-        this.wishlistRepository = wishlistRepository;
+    private MainController() {
+        this.logger = LoggerFactory.getLogger(this.getClass());
     }
 
     @GetMapping("/")

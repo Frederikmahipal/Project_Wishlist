@@ -1,22 +1,22 @@
 package gruppe8.project_wishlist.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.core.env.Environment;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @Service
+@Scope("singleton")
 public class DatabaseService {
     private final String url;
     private final String username;
     private final String password;
 
-    @Autowired
+    // Spring will automatically supply us with the Environment object.
+    // The environment
     private DatabaseService(Environment env) {
         this.url = env.getProperty("spring.datasource.url");
         this.username = env.getProperty("spring.datasource.username");
@@ -31,9 +31,4 @@ public class DatabaseService {
         }
         return null;
     }
-
-    public DataSource getDataSource() {
-        return new DriverManagerDataSource(this.url, this.username, this.password);
-    }
-
 }

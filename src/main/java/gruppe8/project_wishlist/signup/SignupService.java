@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 public class SignupService {
     private final UserRepository userRepository;
     private final Argon2PasswordEncoder passwordEncoder;
-    EmailValidation validator = new EmailValidation();
+    private final EmailValidation validator;
 
-    public SignupService(UserRepository userRepository, Argon2PasswordEncoder passwordEncoder) {
+    public SignupService(UserRepository userRepository,
+                         Argon2PasswordEncoder passwordEncoder,
+                         EmailValidation validator
+    ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.validator = validator;
     }
 
     public Boolean register(SignupRequest request) {

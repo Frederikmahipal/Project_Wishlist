@@ -34,6 +34,7 @@ public class WishlistController {
         User user = (User) authentication.getPrincipal();
         List<Wishlist> wishlists = wishlistService.getWishlistsFromUser(user);
         model.addAttribute ("wishlists", wishlists);
+        model.addAttribute("user", user);
         return "wishlists";
     }
 
