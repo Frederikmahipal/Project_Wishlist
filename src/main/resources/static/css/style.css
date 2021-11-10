@@ -9,3 +9,33 @@ main {
     background-size: cover;
 }
 
+
+.front-content{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.easter-egg{
+    font-size: 0.25rem;
+    font-style: oblique;
+    color: transparent;
+}
+.easter-egg:hover{
+    color: black;
+    font-style: oblique;
+    font-size: 100%;
+}
+
+.index-image{
+    height: 7em;
+    position: relative;
+
+    margin: 1em 5em;
+
+    float: start;
+    top: 10em;
+}
+.index-image:hover{
+    transform: scale(1.3);
+    transition: ease-in-out 250ms;
+}
