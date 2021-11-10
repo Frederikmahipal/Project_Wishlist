@@ -22,7 +22,7 @@
                         <p class="card-text" th:text="${wish.getNote()}"></p>
 
                         <div class="row mx-auto justify-content-between">
-                            <a class="col-auto btn btn-primary" th:href="${wish.getUrl()}">Åben link</a>
+                            <a target="_blank" class="col-auto btn btn-primary" th:href="${wish.getUrl()}">Åben link</a>
                             <button class="col-2 btn btn-danger bi-trash" type="submit"
                                     th:form="'delete'+${wish.getId()}"></button>
                         </div>

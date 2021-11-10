@@ -35,7 +35,7 @@ function checkLoginInput() {
     }
     if (password === "") {
         alert('Udfyld venligst password')
-    } else
+    } else if (email !== "" && password !== "")
         alert('Login var en success! Du viderestilles nu til dine ønskerlister.')
 }
 

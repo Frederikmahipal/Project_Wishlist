@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <th:block th:insert="fragments/components :: head">head</th:block>
+    <script th:src="@{/JSS/functions.js}"></script>
     <title>Tilmeld</title>
 </head>
 <body>
@@ -28,18 +29,19 @@
                             <div class="row mb-3">
                                 <div class="form-check">
                                     <label class="form-label" for="email">Email</label>
-                                    <input class="form-control" type="text" name="email" id="email" required>
+                                    <input class="form-control" type="email" name="email" id="email" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-check">
                                     <label class="form-label" for="password">Kodeord</label>
+
                                     <input class="form-control" type="password" id="password" name="password" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-check">
-                                    <button class="form-control btn btn-primary" type="submit">Tilmeld</button>
+                                    <button class="form-control btn btn-primary" type="submit" onclick="checkInputs()">Tilmeld</button>
                                 </div>
                             </div>
                         </form>
