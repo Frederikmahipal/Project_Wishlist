@@ -29,7 +29,11 @@ public class WishesController {
         model.addAttribute("wishes", wishes);
         model.addAttribute("wishlistId", wishlistId);
         model.addAttribute("user", user);
-        return "wish";
+
+        if (wishService.isWishesOwnedByUser(user, wishlistId)) {
+            return "wish";
+        }
+        return "wishlinked";
     }
 
     @GetMapping("/wish/image/{wishId}")

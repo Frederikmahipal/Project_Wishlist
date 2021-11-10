@@ -47,11 +47,6 @@ public class WishService {
 
     public List<Wish> getWishes(User user, Long wishlistId) {
         boolean userOwnsWishlist = wishlistRepository.userOwnsWishlist(user, wishlistId);
-        if (!userOwnsWishlist) {
-            logger.warn("User " + user.getId() + "tried to get list of wishes from another user.");
-            return null;
-        }
-
         Wishlist wishlist = new Wishlist(null, wishlistId, null); // ew
         return wishRepository.getAllWishesFromWishlist(wishlist);
     }
@@ -74,5 +69,10 @@ public class WishService {
             logger.error(e.getMessage());
         }
         return new byte[0];
+    }
+
+    public boolean isWishesOwnedByUser(User user, Long wishlistId) {
+        boolean userOwnsWishlist = wishlistRepository.userOwnsWishlist(user, wishlistId);
+        return userOwnsWishlist;
     }
 }
