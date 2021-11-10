@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
-    <link rel="stylesheet" th:href="@{css/styles.css}">
     <th:block th:insert="fragments/components :: head">head</th:block>
-
+    <title>Log Ind</title>
 </head>
 <body>
-
 <header th:replace="fragments/components :: navbar"></header>
-
-<main>
-    <h2 class="registration_header">Login</h2>
-    <p th:if="${error}">Something went wrong when signing in. Try again.</p>
-    <p th:if="${signupSuccess}">Successfully registered. Please sign in.</p>
-
-    <div class="centering_container">
-        <form method="POST" th:action="@{/login}">
-            <label>Email
-                <input type="email" id="emailInput" name="email" required>
-            </label>
-
-            <label>Password
-                <input type="password" id="passwordInput" name="password" required>
-                <label>Se kodeord
-                    <input type="checkbox" onclick="passwordVisibility()">
-                </label>
-            </label>
-
-            <input type="submit" value="Login" onclick="checkLoginInput()" required>
-        </form>
+<main class="background-image container-fluid py-5 shadow">
+<!--    <p th:if="${error}">-->
+<!--        An error happened during signup, please check your inputs.-->
+<!--    </p>-->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Log Ind</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/login}">
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input class="form-control" type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <label class="form-label" for="passsword">Kodeord</label>
+                                    <input class="form-control" type="password" name="password" id="passsword" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <button class="form-control btn btn-primary" type="submit">Log Ind</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </main>
-
-
-
 <footer th:replace="fragments/components :: footer"></footer>
-
 </body>
 </html>

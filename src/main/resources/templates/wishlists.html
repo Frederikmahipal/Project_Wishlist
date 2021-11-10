@@ -1,61 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <th:block th:insert="fragments/components :: head">head</th:block>
-        <title>Ønskedisen</title>
-        <link rel="stylesheet" th:href="@{css/wishlist_page.css}">
-
-    </head>
-    <body class="background-image">
-
-    <header th:replace="fragments/components :: navbar"></header>
-
-    <main>
-        <h1 class="center">Din oversigt</h1>
-
-        <p th:if="${error != null}">
-            Der skete en fejl og vi kunne ikke oprette din ønskeliste.
-        </p>
-        <p th:if="${success != null}">
-            Din ønskeliste er blevet oprettet.
-        </p>
-
-        <div class="container">
-
-            <div class="container_all_wishlist">
-                <h2 style="text-align: center">Dine ønskerlister</h2>
-
-                <ul th:each="wishlist : ${wishlists}">
-                    <li><a th:href="${'/wishlist/'+wishlist.getId()}" th:text="${wishlist.getName()}"></a></li>
-                    <form method="post" th:action="@{/deleteWishlist}">
-                        <button >Slet</button>
-                        <input type="hidden" name="id" th:value="${wishlist.getId()}">
-                    </form>
-
-                </ul>
-
+<head>
+    <th:block th:insert="fragments/components :: head">head</th:block>
+    <title>Ønskelister</title>
+</head>
+<body>
+<header th:replace="fragments/components :: navbar(user=${user})"></header>
+<!--<div class="alert" th:if="${message != null}">-->
+<!--    <p th:text="message"></p>-->
+<!--</div>-->
+<main class="background-image container-fluid py-4">
+    <div class="row">
+        <div class="col-lg-6 mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Dine ønskelister</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group" th:each="wishlist : ${wishlists}">
+                        <li class="list-group-item px-2 mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 th:text="${wishlist.getName()}"></h3>
+                                </div>
+                                <div class="col-4 btn-group">
+                                    <a class="btn btn-primary" th:href="'wishlist/'+${wishlist.getId()}">Åbn</a>
+                                    <a class="btn btn-secondary bi-link-45deg" href="#"></a>
+                                    <button class="btn btn-danger bi-trash" th:form="'delete'+${wishlist.getId()}"
+                                            type="submit"></button>
+                                </div>
+                                <form class="visually-hidden" th:id="'delete'+${wishlist.getId()}" method="post"
+                                      th:action="@{/deleteWishlist}">
+                                    <input type="hidden" name="wishlistId" th:value="${wishlist.getId()}">
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="container_create_wishlist">
-                <h2>Ny ønskeliste</h2>
-
-                <form method="post" th:action="@{/addWishlist}">
-                    <label>Navngiv din ønskeliste<br>
-                        <input type="text" name="name" required>
-                    </label>
-
-                    <label>
-                        <input value="Opret" type="submit">
-                    </label>
-                </form>
-
-            </div>
-
-
         </div>
 
-    </main>
-    <footer th:replace="fragments/components :: footer"></footer>
-
-    </body>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Ny ønskeliste</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" th:action="@{/addWishlist}">
+                        <div class="form-group mb-2">
+                            <label for="name">Navngiv din ønskeliste</label>
+                            <input class="form-control" type="text" id="name" name="name" required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Tilføj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/components :: footer"></footer>
+</body>
 </html>

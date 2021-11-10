@@ -4,46 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" th:href="@{/css/normalize.css}">
-    <link rel="stylesheet" th:href="@{/css/navigation.css}">
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
-<div class="navbar box-border" th:fragment="navbar">
-    <a th:href="@{/}"><img id="logo" th:src="@{/images/StolenLogoVector.svg}" alt="logo"></a>
-    <div class="navbar-fill"></div>
+<!--Optional fragment parameter user, when a user parameter is present we will show a different navbar -->
+<!-- https://stackoverflow.com/a/48911702 -->
+<div th:fragment="navbar" th:with="user=${user} ?: null" th:remove="tag">
+    <header class="navbar navbar-expand navbar-light bg-light sticky-top shadow" th:if="${user} == null">
+        <div class="container fw-bold">
+            <a class="navbar-brand" th:href="@{/}">
+                <img width="48" height="48" class="d-inline-block" th:src="@{/images/StolenLogoVector.svg}" alt="logo">
+                <span class="d-none d-md-inline ms-4">Ønskedisen</span>
+            </a>
+            <div class="navbar-nav gap-4">
+                <a class="nav-item nav-link btn btn-link" th:href="@{/signup}">Tilmeld</a>
+                <a class="nav-item nav-link btn btn-primary text-light" th:href="@{/login}">Log Ind</a>
+            </div>
+        </div>
+    </header>
 
-    <div class="navbar-text">
-        <a th:href="@{/signup}">Tilmeld</a>
-    </div>
-    <div class="navbar-text">
-        <a th:href="@{/home}">Ønskelister</a>
-    </div>
-    <!--
-   <p class="navbar-text" th:text="${user.getFullName()}"></p>
-    -->
-    <div class="navbar-text" id="login">
-        <a th:href="@{/login}">Log Ind</a>
-    </div>
+    <header class="navbar navbar-expand navbar-light bg-light sticky-top shadow" th:unless="${user} == null">
+        <div class="container fw-bold">
+            <a class="navbar-brand" th:href="@{/}">
+                <img width="48" height="48" class="d-inline-block" th:src="@{/images/StolenLogoVector.svg}" alt="logo">
+                <span class="d-none d-md-inline ms-4">Ønskedisen</span>
+            </a>
+            <div class="navbar-nav gap-4">
+                <a class="nav-item nav-link btn btn-link" th:href="@{/home}">Ønskelister</a>
+                <a class="nav-item nav-link btn btn-link" th:href="@{/profile}" th:text="${user.getFullName()}"></a>
+                <a class="nav-item nav-link btn btn-primary text-light" th:href="@{/logout}">Log Ud</a>
+            </div>
+        </div>
+    </header>
 </div>
 
-
-<footer class="footer box-border" th:fragment="footer">
-    <div class="footer-img">
-
-    </div>
-    <div class="footer-wrapper">
-        <div class="footer-article">
-            <a href="https://github.com/MaltheGram" target="_blank">Malthe Gram</a>
-            <p>|</p>
-            <a href="https://github.com/simongr3dal" target="_blank">Simon Gredal</a>
-            <p>|</p>
-            <a href="https://github.com/Frederikmahipal" target="_blank">Frederik Vilhelmsen</a>
-            <p>|</p>
-            <a href="https://github.com/mark3010" target="_blank">Mark Larsen</a>
+<footer class="container-fluid py-3 bg-dark" th:fragment="footer">
+    <div class="row col-lg-8 offset-lg-2">
+        <div class="nav nav-justified align-items-center">
+            <a class="nav-link link-light" href="https://github.com/MaltheGram" target="_blank">Malthe Gram</a>
+            <a class="nav-link link-light" href="https://github.com/simongredal" target="_blank">Simon Gredal</a>
+            <a class="nav-link link-light" href="https://github.com/Frederikmahipal" target="_blank">Frederik Vilhelmsen</a>
+            <a class="nav-link link-light" href="https://github.com/mark3010" target="_blank">Mark Larsen</a>
+            <a href="nav-link link-light" th:href="@{/}">
+                <img width="48" height="48" class="img-fluid"  th:src="@{/images/StolenLogoVector.svg}" alt="logo">
+            </a>
         </div>
-        <a th:href="@{/}"><img id="footer-logo" th:src="@{/images/StolenLogoVector.svg}" alt="logo"></a>
     </div>
 </footer>
 

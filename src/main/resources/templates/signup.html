@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Signup</title>
-    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
-    <link rel="stylesheet" th:href="@{css/styles.css}">
     <th:block th:insert="fragments/components :: head">head</th:block>
+    <title>Tilmeld</title>
 </head>
-
 <body>
-
 <header th:replace="fragments/components :: navbar"></header>
-
-<main>
-    <h2 class="registration_header">Registration</h2>
-
-    <p th:if="${error}">
-        An error happened during signup, please check your inputs.
-    </p>
-    <div class="centering_container">
-        <form method="POST" th:action="@{/signup}">
-            <label>Name
-                <input type="text" id="nameInput" name="fullName" required>
-            </label><br>
-
-            <label>Email
-                <input type="text" name="email" id="emailInput" required>
-            </label><br>
-
-            <label>Password
-                <input type="password" id="passwordInput" name="password" required>
-                <label>Se kodeord
-                    <input type="checkbox" onclick="passwordVisibility()">
-                </label>
-            </label>
-
-
-
-            <input type="submit" value="Registrer" id="submitInput" onclick="checkInputs()">
-        </form>
+<main class="background-image container-fluid py-5 shadow">
+<!--    <p th:if="${error}">-->
+<!--        An error happened during signup, please check your inputs.-->
+<!--    </p>-->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-10">
+                <div class="card">
+                    <div class="card-header">
+                            <h2>Tilmelding</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/signup}">
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <label class="form-label" for="name">Fulde navn</label>
+                                    <input class="form-control" type="text" id="name" name="fullName" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input class="form-control" type="text" name="email" id="email" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <label class="form-label" for="password">Kodeord</label>
+                                    <input class="form-control" type="password" id="password" name="password" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <button class="form-control btn btn-primary" type="submit">Tilmeld</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
-
-
 <footer th:replace="fragments/components :: footer"></footer>
-
 </body>
 </html>
