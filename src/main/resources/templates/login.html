@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <th:block th:insert="fragments/components :: head">head</th:block>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
     <title>Log Ind</title>
 </head>
 <body>
@@ -27,13 +28,16 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="form-check">
-                                    <label class="form-label" for="passsword">Kodeord</label>
-                                    <input class="form-control" type="password" name="password" id="passsword" required>
+                                    <label class="form-label" for="password">Kodeord
+                                        <input class="form-control" type="password" name="password" id="password" required>
+                                        <input type="checkbox" onclick="passwordVisibility()">
+                                        <label>Se kodeord</label>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-check">
-                                    <button class="form-control btn btn-primary" type="submit">Log Ind</button>
+                                    <button class="form-control btn btn-primary" onclick="checkLoginInput()" type="submit">Log Ind</button>
                                 </div>
                             </div>
                         </form>

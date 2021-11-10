@@ -34,8 +34,11 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="form-check">
-                                    <label class="form-label" for="password">Kodeord</label>
-                                    <input class="form-control" type="password" id="password" name="password" required>
+                                    <label class="form-label" for="password">Kodeord
+                                        <input class="form-control" type="password" id="password" name="password" required>
+                                        <input type="checkbox" onclick="passwordVisibility()">
+                                        <label>Se kodeord</label>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -53,3 +56,10 @@
 <footer th:replace="fragments/components :: footer"></footer>
 </body>
 </html>
+
+<label>Password
+    <input type="password" id="passwordInput" name="password" required>
+    <label>Se kodeord
+        <input type="checkbox" onclick="passwordVisibility()">
+    </label>
+</label>

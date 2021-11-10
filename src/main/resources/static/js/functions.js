@@ -9,9 +9,9 @@ function passwordVisibility() {
 }
 
 function checkInputs() {
-    let name = document.getElementById("nameInput").value
-    let email = document.getElementById("emailInput").value
-    let password = document.getElementById("passwordInput").value
+    let name = document.getElementById("name").value
+    let email = document.getElementById("email").value
+    let password = document.getElementById("password").value
 
     if (name === "") {
         alert('Udfyld venligst navn')
@@ -21,14 +21,14 @@ function checkInputs() {
     }
     if (password === "") {
         alert('Udfyld venligst password')
-    } else
+    } else if (name && email && password !== "")
         alert('Registrering færdig! Du bliver viderestillet')
 }
 
 
 function checkLoginInput() {
-    let email = document.getElementById("emailInput").value
-    let password = document.getElementById("passwordInput").value
+    let email = document.getElementById("email").value
+    let password = document.getElementById("password").value
 
     if (email === "") {
         alert('Udfyld venligst email')
@@ -54,7 +54,7 @@ function checkWishInputs() {
     }
     if (price === "") {
         alert('Udfyld venligst en pris')
-    } else
+    } else if (title && url && price !== "")
         alert('Dit ønske er tilføjet!')
 }
 
