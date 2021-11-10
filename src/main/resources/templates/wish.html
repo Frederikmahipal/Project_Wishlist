@@ -24,7 +24,7 @@
                 <ul th:each="wish : ${wishes}">
                     <li>
                         <p th:text="${wish.getTitle()}"></p>
-                        <a th:href="${wish.getUrl()}" th:text="${wish.getUrl()}"></a>
+                        <a target="_blank" th:href="${wish.getUrl()}" th:text="${wish.getUrl()}"></a>
                         <p th:text="${wish.getPrice()}"></p>
                         <p th:text="${wish.getNote()}"></p>
                         <form method="post" th:action="@{/deleteWish}">
