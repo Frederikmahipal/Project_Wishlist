@@ -80,7 +80,7 @@ public class Wish {
     @Override
     public String toString() {
         return "Wish{" +
-                "id=" + id +
+                "wishlistId=" + id +
                 ", price=" + price +
                 ", title='" + title + '\'' +
                 ", url='" + url + '\'' +

@@ -32,7 +32,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/", "/signup", "/sharedlink/*", "/js/**", "/css/**", "/favicon.ico","/images/**" ).permitAll()
+                .antMatchers("/", "/signup", "/sharedlink/*", "/js/**", "/css/**", "/favicon.ico","/images/**", "fonts/**", "/wish/image/**" ).permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -42,7 +42,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .failureForwardUrl("/login?error")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .permitAll();
+                .permitAll()
+                .and()
+            .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");
     }
 
     @Override

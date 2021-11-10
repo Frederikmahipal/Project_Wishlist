@@ -1,5 +1,8 @@
 package gruppe8.project_wishlist.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +18,10 @@ public class User implements UserDetails {
     private String argon2Password;
     private LocalDateTime created;
 
+    @Autowired
+    public User() {
+    }
+
     public User(Long id, String name, String email, String password, LocalDateTime created) {
         this.id = id;
         this.fullName = name;
@@ -26,6 +33,11 @@ public class User implements UserDetails {
         this.fullName = name;
         this.email = email;
         this.argon2Password = password;
+    }
+
+    @Bean
+    public User createUserfromAuthentication(Authentication authentication) {
+        return (User) authentication.getPrincipal();
     }
 
     // Part of UserDetails interface
@@ -67,7 +79,7 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "wishlistId=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", argon2Password='" + argon2Password + '\'' +

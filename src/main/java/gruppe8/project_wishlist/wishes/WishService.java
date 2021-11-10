@@ -10,6 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -37,6 +40,7 @@ public class WishService {
         wish.setNote(request.note());
         wish.setTitle(request.title());
         wish.setUrl(request.url());
+        wish.setImage(request.image().getResource());
 
         return wishRepository.createWish(wishlist, wish);
     }
@@ -59,8 +63,16 @@ public class WishService {
         Wish wish = new Wish();
         wish.setId(request.wishId());
 
-
-        return wishRepository.deleteWishFromWishlist(wish);
+        boolean success = wishRepository.deleteWishFromWishlist(wish);
+        return success;
     }
 
+    public byte[] getImageFromWishId(Long wishId) {
+        try (InputStream pictureData = wishRepository.getImageFromWishId(wishId).getBinaryStream() ) {
+            return pictureData.readAllBytes();
+        } catch (SQLException | IOException | NullPointerException e) {
+            logger.error(e.getMessage());
+        }
+        return new byte[0];
+    }
 }

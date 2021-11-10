@@ -1,17 +1,26 @@
 package gruppe8.project_wishlist.services;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class EmailValidation {
+    private EmailValidation() {
+    }
 
-    private final String REGEXLETTERS = "(?i).*[a-z].*";
+    public boolean isEmailValid(String email) {
+        String userPart;
+        String domainPart;
+        boolean hasAtSign = email.contains("@");
+        boolean hasUserPart = false;
+        boolean hasDomainPart = false;
 
-    public boolean isEmailValid(String email){
-
-        if (email.contains("@") && email.contains(".") && email.matches(REGEXLETTERS)){
-            System.out.println("Valid email");
-            return true;
+        if (hasAtSign) {
+            userPart = email.split("@")[0];
+            domainPart = email.split("@")[1];
+            hasUserPart = userPart.length() > 0;
+            hasDomainPart = domainPart.contains(".") && domainPart.length() > 1;
         }
-        else
-            System.out.println("Invalid email. Must contain @, . and letters");
-            return false;
+
+        return hasAtSign && hasUserPart && hasDomainPart;
     }
 }

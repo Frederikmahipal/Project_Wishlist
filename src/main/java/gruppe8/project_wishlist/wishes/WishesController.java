@@ -28,9 +28,15 @@ public class WishesController {
 
         model.addAttribute("wishes", wishes);
         model.addAttribute("wishlistId", wishlistId);
+        model.addAttribute("user", user);
         return "wish";
     }
 
+    @GetMapping("/wish/image/{wishId}")
+    @ResponseBody
+    public byte[] getImage(@PathVariable Long wishId) {
+        return wishService.getImageFromWishId(wishId);
+    }
 
     @PostMapping("/addWish")
     public String addWish(@RequestParam Long wishlistId, WishCreationRequest request, Model model, Authentication authentication) {
