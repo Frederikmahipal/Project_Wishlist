@@ -34,7 +34,7 @@
             </a>
             <div class="navbar-nav gap-4">
                 <a class="nav-item nav-link btn btn-link" th:href="@{/home}">Ønskelister</a>
-                <a class="nav-item nav-link btn btn-link" th:href="@{/profile}" th:text="${user.getFullName()}"></a>
+                <a class="nav-item nav-link btn btn-link" th:href="@{#}" th:text="${user.getFullName()}"></a>
                 <a class="nav-item nav-link btn btn-primary text-light" th:href="@{/logout}">Log Ud</a>
             </div>
         </div>
