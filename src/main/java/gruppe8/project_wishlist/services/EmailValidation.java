@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailValidation {
-    private EmailValidation() {
+    EmailValidation() {
     }
 
     public boolean isEmailValid(String email) {
