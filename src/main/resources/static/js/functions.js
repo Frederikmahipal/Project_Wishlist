@@ -58,4 +58,15 @@ function checkWishInputs() {
         alert('Dit ønske er tilføjet!')
 }
 
+function getSharingLink() {
+    /* Get the text field */
+    var copyText = document.getElementById("copiedLink");
+
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+
+    /* Alert the copied text */
+    alert("Et link til din ønskeliste er nu kopieret. Del det med dine bekendte!: \n" + copyText.value);
+}
+
 
